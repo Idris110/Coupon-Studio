@@ -74,7 +74,7 @@ const routes = [
   {
     name: "Promotions List",
     layout: "/admin",
-    path: "newPromo",
+    path: "listPromo",
     icon: <MdHome className="h-6 w-6" />,
     component: <Promo />,
   },

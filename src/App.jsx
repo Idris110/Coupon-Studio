@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import RtlLayout from "layouts/rtl";
 import AdminLayout from "layouts/admin";
 import AuthLayout from "layouts/auth";
+
 const App = () => {
   return (
     <Routes>

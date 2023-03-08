@@ -13,7 +13,7 @@ const createPromotion = () => {
         type="text"
         id="id1"
         placeholder="Enter the program name"
-        className={`flex h-16 w-full items-center justify-center rounded-xl border bg-white/0 p-2 text-lg outline-none pl-5`}
+        className={`flex h-16 w-full items-center justify-center rounded-xl border bg-white/0 p-2 text-lg outline-none pl-5 bg-lightPrimary`}
       />
     </div>
   );
