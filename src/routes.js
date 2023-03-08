@@ -6,6 +6,7 @@ import NFTMarketplace from "views/admin/marketplace";
 import Profile from "views/admin/profile";
 import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
+import Promo from "views/admin/promotion";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -62,6 +63,20 @@ const routes = [
     path: "rtl",
     icon: <MdHome className="h-6 w-6" />,
     component: <RTLDefault />,
+  },
+  {
+    name: "Create Promotions",
+    layout: "/admin",
+    path: "newPromo",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <Promo />,
+  },
+  {
+    name: "Promotions List",
+    layout: "/admin",
+    path: "newPromo",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <Promo />,
   },
 ];
 export default routes;
