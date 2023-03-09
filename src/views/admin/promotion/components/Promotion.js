@@ -21,6 +21,7 @@ const Promotion = () => {
       amount: 0
     } 
   });
+  
   const handleChange = (e) => {
     console.log(e);
     console.log(details);
