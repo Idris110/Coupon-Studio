@@ -3,17 +3,17 @@ import Datepicker from "react-tailwindcss-datepicker";
 import { useState } from "react";
 
 
-const createPromotion = () => {
+const Promotion = () => {
 
-  // const [value, setValue] = useState({
-  //     startDate: new Date(),
-  //     endDate: new Date().setMonth(11)
-  // });
+  const [value, setValue] = useState({
+      startDate: new Date(),
+      endDate: new Date().setMonth(11)
+  });
 
-  // const handleValueChange = (newValue) => {
-  //     console.log("newValue:", newValue);
-  //     setValue(newValue);
-  // }
+  const handleValueChange = (newValue) => {
+      console.log("newValue:", newValue);
+      setValue(newValue);
+  }
 
   return (
     <div className="flex w-full flex-col gap-5">
@@ -65,4 +65,4 @@ const createPromotion = () => {
   );
 };
 
-export default createPromotion;
+export default Promotion;
