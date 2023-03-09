@@ -141,6 +141,7 @@ module.exports = {
       brandLinear: "#868CFF",
       krishPrimary:"#ff52e5",
       krishSecondary:"#F4F10E",
+      formBg:"#e8f0fe",
       gray: {
         50: "#f8f9fa",
         100: "#edf2f7",
