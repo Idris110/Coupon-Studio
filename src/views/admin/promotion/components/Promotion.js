@@ -40,6 +40,18 @@ const Promotion = () => {
     e.preventDefault();
     // console.log(e);
     console.log(details);
+    let result = await fetch("http://localhost:3000/productType", {
+      method: "post",
+      body: JSON.stringify(details),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    result = await result.json();
+    //   console.log(result, "result");
+    localStorage.setItem("admin", JSON.stringify(result));
+    // navigate("/");
   }
   return (
     <div className="flex w-full flex-col gap-5">
