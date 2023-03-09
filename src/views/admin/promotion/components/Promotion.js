@@ -4,8 +4,12 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 
 const Promotion = () => {
-
-  const [selectedDay, setSelectedDay] = useState(null);
+  const defaultValue = {
+    year: 2023,
+    month: 3,
+    day: 11
+  }
+  const [selectedDay, setSelectedDay] = useState(defaultValue);
   const [details, setDetails] = useState({
     programName: "",
     couponType: "",
@@ -19,14 +23,19 @@ const Promotion = () => {
     reward: {
       type: "",
       amount: 0
-    } 
+    },
+    expiryDate: {
+      year: 2023,
+      month: 3,
+      day: 11
+    }
   });
-  const Change = (e) => {
-    console.log(e);
-    console.log(details);
-    // setDetails(...details, e.target.name: e.target.value);
+  // const Change = (e) => {
+  //   console.log(e);
+  //   console.log(details);
+  //   setDetails(...details, e.target.name: e.target.value);
     
-  }
+  // }
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
@@ -89,7 +98,7 @@ const Promotion = () => {
                 <div className="mr-4">
                   <div className="relative">
                     <select 
-                    value = {details.usage.type}
+                      value = {details.usage.type}
                       onChange={(e) => {
                         let x =e.target.value;
                         e.target.value = "unlimited"? setDetails({...details, usage: { type: x, limit: -1}}): setDetails({...details, usage: { type: x, limit: details.usage.limit}})}} 
@@ -230,7 +239,20 @@ const Promotion = () => {
               
                 value={selectedDay}
                 colorPrimary="#422afb" // added this
-                onChange={setSelectedDay}
+                onChange={(e) => {
+                  // let x = e.target.value;
+                  console.log(e);
+                  setDetails({...details, expiryDate: {
+                    year: e.year,
+                    month: e.month,
+                    day: e.day
+                  }})
+                  setSelectedDay({
+                    year: e.year,
+                    month: e.month,
+                    day: e.day
+                  })
+                }}
                 shouldHighlightWeekends
               />
             </div>
