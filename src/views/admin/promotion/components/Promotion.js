@@ -19,14 +19,13 @@ const Promotion = () => {
     reward: {
       type: "",
       amount: 0
-    }
+    } 
   });
-
-  const handleChange = (e) => {
+  const Change = (e) => {
     console.log(e);
     console.log(details);
     // setDetails(...details, e.target.name: e.target.value);
-
+    
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +45,7 @@ const Promotion = () => {
         <input
           type="text"
           id="id1"
+          onChange={(e) => {setDetails({...details, programName: e.target.value})}}
           placeholder="Enter the program name"
           className={`flex h-19 w-full items-center justify-center rounded-xl border p-2 text-2xl outline-none pl-5 bg-formBg`}
         />
@@ -60,13 +60,15 @@ const Promotion = () => {
                 Program Type
               </label>
               <div className="relative">
-                <select className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                  <option value ="Coupons">Coupons</option>
-                  <option value ="LoyaltyCards">Loyalty Cards</option>
-                  <option value ="Promotions">Promotions</option>
-                  <option value ="DiscoutCode">Discount Code</option>
-                  <option value ="BuyXgetY">Buy X get Y</option>
-                  <option value ="NextOrder">Next Order Coupons</option>
+                <select name="couponType" 
+                onChange={(e) => {setDetails({...details, couponType: e.target.value})}} 
+                className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                  <option >Coupons</option>
+                  <option>Loyalty Cards</option>
+                  <option>Promotions</option>
+                  <option>Discount Code</option>
+                  <option>Buy X get Y</option>
+                  <option>Next Order Coupons</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
@@ -84,7 +86,9 @@ const Promotion = () => {
               <div className="grid grid-cols-2 mt-3">
                 <div className="mr-4">
                   <div className="relative">
-                    <select className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select 
+                      onChange={(e) => {e.target.value = "unlimited"? setDetails({...details, usage: { type: e.target.name, limit: -1}}): setDetails({...details, usage: { type: e.target.value, limit: details.usage.limit}})}} 
+                      className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                       <option>Limited</option>
                       <option>Unlimited</option>
                     </select>
@@ -96,6 +100,7 @@ const Promotion = () => {
 
                 <div className="">
                   <input
+                    onChange = {(e) => {setDetails({...details, usage: {type: details.usage.type, limit: e.target.value}})}}
                     type="text"
                     id="id1"
                     placeholder="Enter usage limit"
@@ -124,8 +129,8 @@ const Promotion = () => {
                 <input
                   type="text"
                   id="id1"
-
-                  placeholder=""
+                  onChange={(e) => {setDetails({...details, minPurchase: e.target.value})}}
+                  placeholder="Enter minimum purchase amount"
                   disabled={false}
                   className={`mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                 />
@@ -141,8 +146,8 @@ const Promotion = () => {
                 <input
                   type="text"
                   id="id1"
-
-                  placeholder=""
+                  onChange={(e) => {setDetails({...details, maxDiscount: e.target.value})}}
+                  placeholder="Max applicable discount"
                   disabled={false}
                   className={`mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                 />
@@ -158,8 +163,8 @@ const Promotion = () => {
                 <input
                   type="text"
                   id="id1"
-
-                  placeholder=""
+                  onChange={(e) => {setDetails({...details, porductType: e.target.value})}}
+                  placeholder="Product Type"
                   disabled={false}
                   className={`mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                 />
@@ -177,7 +182,9 @@ const Promotion = () => {
               <div className="grid grid-cols-2 mt-3">
                 <div className="mr-4">
                   <div className="relative">
-                    <select className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select 
+                      onChange={(e) => {setDetails({...details, reward: {type: e.target.value, amount: details.reward.amount}})}} 
+                    className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                       <option>Absolute</option>
                       <option>Percentage</option>
                     </select>
@@ -191,7 +198,8 @@ const Promotion = () => {
                   <input
                     type="text"
                     id="id1"
-                    placeholder="Enter "
+                    placeholder="Enter amount"
+                    onChange={(e) => {setDetails({...details, reward: {type: details.reward.type , amount: e.target.value}})}} 
                     disabled={false}
                     className={`flex h-15 w-full items-center justify-center rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                   />
@@ -204,27 +212,27 @@ const Promotion = () => {
 
           <div className="flex justify-center">
             <div className="">
-              <label
-                htmlFor="validity"
-                className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
-              >
-                Validity
-              </label>
-              <div className="mt-3 display-none">
-                <Calendar
-
-                  value={selectedDay}
-                  colorPrimary="#422afb" // added this
-                  onChange={setSelectedDay}
-                  shouldHighlightWeekends
-                />
-              </div>
-              <div className="content-end">
-                <button type="submit" class="bg-krishSecondary mt-7 w-1/2 hover:bg-blue-700 text-blue font-bold py-2 px-4 rounded-xl border">
-                  Button
-                </button>
-              </div>
+            <label
+              htmlFor="validity"
+              className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
+            >
+              Validity
+            </label>
+            <div className="mt-3 display-none">
+              <Calendar
+              
+                value={selectedDay}
+                colorPrimary="#422afb" // added this
+                onChange={setSelectedDay}
+                shouldHighlightWeekends
+              />
             </div>
+            <div className="content-end">
+            <button type="submit" class="bg-krishSecondary mt-7 w-1/2 hover:bg-blue-700 text-blue font-bold py-2 px-4 rounded-xl border">
+              Button 
+            </button>
+            </div>
+          </div>
           </div>
         </div>
 
