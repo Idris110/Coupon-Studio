@@ -61,14 +61,16 @@ const Promotion = () => {
               </label>
               <div className="relative">
                 <select name="couponType" 
-                onChange={(e) => {setDetails({...details, couponType: e.target.value})}} 
+                
+                onChange={(e) => { let x = e.target.value
+                  setDetails({...details, couponType: x})}} 
                 className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                  <option >Coupons</option>
-                  <option>Loyalty Cards</option>
-                  <option>Promotions</option>
-                  <option>Discount Code</option>
-                  <option>Buy X get Y</option>
-                  <option>Next Order Coupons</option>
+                  <option value = "Coupons">Coupons</option>
+                  <option value = "LoyaltyCards">Loyalty Cards</option>
+                  <option value = "Promotions">Promotions</option>
+                  <option value = "DiscoutCode">Discount Code</option>
+                  <option value = "BuyXgetY">Buy X get Y</option>
+                  <option value = "NextOrder">Next Order Coupons</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
@@ -87,10 +89,13 @@ const Promotion = () => {
                 <div className="mr-4">
                   <div className="relative">
                     <select 
-                      onChange={(e) => {e.target.value = "unlimited"? setDetails({...details, usage: { type: e.target.name, limit: -1}}): setDetails({...details, usage: { type: e.target.value, limit: details.usage.limit}})}} 
+                    value = {details.usage.type}
+                      onChange={(e) => {
+                        let x =e.target.value;
+                        e.target.value = "unlimited"? setDetails({...details, usage: { type: x, limit: -1}}): setDetails({...details, usage: { type: x, limit: details.usage.limit}})}} 
                       className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                      <option>Limited</option>
-                      <option>Unlimited</option>
+                      <option value="limited">Limited</option>
+                      <option value="unlimited">Unlimited</option>
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
@@ -183,10 +188,12 @@ const Promotion = () => {
                 <div className="mr-4">
                   <div className="relative">
                     <select 
-                      onChange={(e) => {setDetails({...details, reward: {type: e.target.value, amount: details.reward.amount}})}} 
+                      onChange={(e) => {
+                        let x =e.target.value;
+                        setDetails({...details, reward: {type: x, amount: details.reward.amount}})}} 
                     className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                      <option>Absolute</option>
-                      <option>Percentage</option>
+                      <option value="Absolute">Absolute</option>
+                      <option value="Percentage">Percentage</option>
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
