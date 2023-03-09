@@ -8,6 +8,8 @@ import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
 import Promo from "views/admin/promotion/components/Promotion";
 import List from "views/admin/promotion/components/List";
+import DeployCoupon from "views/admin/promotion/components/DeployCoupon";
+import AddEcom from "views/admin/promotion/components/AddEcom";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -79,5 +81,19 @@ const routes = [
     icon: <MdHome className="h-6 w-6" />,
     component: <List/>,
   },
+  {
+    name: "Deploy Coupon",
+    layout: "/admin",
+    path: "deployCoupon",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <DeployCoupon/>,
+  },
+  {
+    name: "Add Ecommerce",
+    layout: "/admin",
+    path: "addEcom",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <AddEcom/>,
+  }
 ];
 export default routes;
