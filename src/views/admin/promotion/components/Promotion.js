@@ -1,19 +1,11 @@
 import React from "react";
-import Datepicker from "react-tailwindcss-datepicker";
 import { useState } from "react";
-
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import { Calendar } from "react-modern-calendar-datepicker";
 
 const Promotion = () => {
 
-  const [value, setValue] = useState({
-      startDate: new Date(),
-      endDate: new Date().setMonth(11)
-  });
-
-  const handleValueChange = (newValue) => {
-      console.log("newValue:", newValue);
-      setValue(newValue);
-  }
+  const [selectedDay, setSelectedDay] = useState(null);
 
   return (
     <div className="flex w-full flex-col gap-5">
@@ -55,10 +47,17 @@ const Promotion = () => {
           </div>
         </div>        
         <div className="">
-            {/* <Datepicker
-                value={value}
-                onChange={handleValueChange}
-            /> */}
+          <label
+              htmlFor=""
+              className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
+            >
+              Program Type
+            </label>
+        <Calendar
+          value={selectedDay}
+          onChange={setSelectedDay}
+          shouldHighlightWeekends
+        />
         </div>        
       </div>
     </div>
