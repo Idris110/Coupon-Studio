@@ -142,6 +142,8 @@ module.exports = {
       krishPrimary:"#ff52e5",
       krishSecondary:"#F4F10E",
       formBg:"#e8f0fe",
+      ourTheme:"#8185ff",
+      ourDarkTheme:"#422bf5",
       gray: {
         50: "#f8f9fa",
         100: "#edf2f7",
