@@ -7,6 +7,7 @@ import Profile from "views/admin/profile";
 import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
 import Promo from "views/admin/promotion/components/Promotion";
+import List from "views/admin/promotion/components/List";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -76,7 +77,7 @@ const routes = [
     layout: "/admin",
     path: "listPromo",
     icon: <MdHome className="h-6 w-6" />,
-    component: <Promo />,
+    component: <List/>,
   },
 ];
 export default routes;
