@@ -6,10 +6,11 @@ import NFTMarketplace from "views/admin/marketplace";
 import Profile from "views/admin/profile";
 import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
-import Promo from "views/admin/promotion/components/Promotion";
-import List from "views/admin/promotion/components/List";
-import DeployCoupon from "views/admin/promotion/components/DeployCoupon";
-import AddEcom from "views/admin/promotion/components/AddEcom";
+import Promo from "views/admin/promotion/Promotion";
+import List from "views/admin/promotion/List";
+import DeployCoupon from "views/admin/promotion/DeployCoupon";
+import AddEcom from "views/admin/promotion/AddEcom";
+import CouponDetails from "views/admin/promotion/CouponDetails";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -94,6 +95,13 @@ const routes = [
     path: "addEcom",
     icon: <MdHome className="h-6 w-6" />,
     component: <AddEcom/>,
+  },
+  {
+    name: "View Coupon Details",
+    layout: "/admin",
+    path: "couponDetails",
+    icon: <MdBarChart className="h-6 w-6" />,
+    component: <CouponDetails/>,
   }
 ];
 export default routes;

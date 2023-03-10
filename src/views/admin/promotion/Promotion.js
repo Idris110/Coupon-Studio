@@ -59,7 +59,7 @@ const Promotion = () => {
 
         <label
           htmlFor="id1"
-          className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
+          className={`text-xl mt-5 mb-5 text-navy-700 dark:text-white ml-3 font-bold`}
         >
           Program Name
         </label>
@@ -69,7 +69,7 @@ const Promotion = () => {
           id="id1"
           onChange={(e) => { setDetails({ ...details, programName: e.target.value }) }}
           placeholder="Enter the program name"
-          className={`flex h-19 w-full items-center justify-center rounded-xl border p-2 text-2xl outline-none pl-5 bg-formBg`}
+          className={`flex h-19 mt-3 w-full items-center justify-center rounded-xl border p-2 text-2xl outline-none pl-5 bg-formBg`}
         />
 
         <div className="mt-6 grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 mb-8">
