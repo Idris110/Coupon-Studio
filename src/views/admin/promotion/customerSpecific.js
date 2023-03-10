@@ -1,9 +1,27 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
-
+import ComplexTable from "views/admin/default/components/CouponTable";
 const Promotion = () => {
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+      getProducts();
+      // makeTable();
+    }, []);
+
+    const getProducts = async () => {
+      let result = await fetch(`http://localhost:3000/company`);
+      result = await result.json();
+      const newData = result.map((item) => {
+        return {
+          name: item.companyName,
+          date: item.companySite,
+          progress: item.companyUniqueId,
+        };
+      });
+      setProducts(newData);
+    };
   const defaultValue = {
     year: 2023,
     month: 3,
@@ -30,17 +48,42 @@ const Promotion = () => {
       day: 11,
     },
   });
-  // const Change = (e) => {
-  //   console.log(e);
-  //   console.log(details);
-  //   setDetails(...details, e.target.name: e.target.value);
+  const columnsDataComplex = [
+    {
+      Header: "Company Name",
+      accessor: "name",
+    },
+    // {
+    //   Header: "STATUS",
+    //   accessor: "status",
+    // },
+    {
+      Header: "Company Url",
+      accessor: "date",
+    },
+    {
+      Header: "Company Id",
+      accessor: "progress",
+    },
+  ];
+  const Edit = async (e) => {
+    console.log(e);
+    console.log(details);
+    let id = "640b6f5a9cd0d314cce31b18";
+    let result = await fetch(
+      `http://localhost:3000/UserSpecific/get/${id}`
+    );
+    result = await result.json();
+    setDetails(result.user);
+    console.log(details,"result");
 
-  // }
+  }
+//   Edit();
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
-    console.log(details);
-    let result = await fetch("http://localhost:3000/productType", {
+    // console.log(details);
+    let result = await fetch("http://localhost:3000/UserSpecific", {
       method: "post",
       body: JSON.stringify(details),
       headers: {
@@ -49,12 +92,13 @@ const Promotion = () => {
       },
     });
     result = await result.json();
-    //   console.log(result, "result");
-    localStorage.setItem("admin", JSON.stringify(result));
+      console.log(result, "result");
+    // localStorage.setItem("admin", JSON.stringify(result));
     // navigate("/");
   };
   return (
     <div className="flex w-full flex-col gap-5">
+      <ComplexTable columnsData={columnsDataComplex} tableData={products} />
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -62,7 +106,7 @@ const Promotion = () => {
               htmlFor="id1"
               className={`mt-5 mb-5 ml-6 text-xl font-bold text-navy-700 dark:text-white`}
             >
-              User Specific
+              User Id
             </label>
             <input
               value={details.programName}
@@ -80,7 +124,7 @@ const Promotion = () => {
                 htmlFor="progType"
                 className={`mt-5 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
               >
-                Program Type
+                Prduct Type
               </label>
               <div className="relative">
                 <select

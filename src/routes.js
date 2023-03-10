@@ -107,7 +107,7 @@ const routes = [
   {
     name: "User Specific Coupon",
     layout: "/admin",
-    path: "couponDetails",
+    path: "userSpecific",
     icon: <MdBarChart className="h-6 w-6" />,
     component: <CustomerSpecific />,
   },
