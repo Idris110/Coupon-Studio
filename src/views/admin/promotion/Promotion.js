@@ -57,23 +57,23 @@ const Promotion = () => {
     <div className="flex w-full flex-col gap-5">
       <form onSubmit={handleSubmit} action="" className="mt-5">
 
-        <label
-          htmlFor="id1"
-          className={`text-xl mt-5 mb-5 text-navy-700 dark:text-white ml-3 font-bold`}
-        >
-          Program Name
-        </label>
-        <input
-          value={details.programName}
-          type="text"
-          id="id1"
-          onChange={(e) => { setDetails({ ...details, programName: e.target.value }) }}
-          placeholder="Enter the program name"
-          className={`flex h-19 mt-3 w-full items-center justify-center rounded-xl border p-2 text-2xl outline-none pl-5 bg-formBg`}
-        />
-
-        <div className="mt-6 grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-8 mb-8">
+        <div className="mt-6 grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 md:gap-12 mb-8">
           <div className="">
+            <label
+              htmlFor="id1"
+              className={`text-xl mt-5 mb-5 text-navy-700 dark:text-white ml-6 font-bold`}
+            >
+              Program Name
+            </label>
+            <input
+              value={details.programName}
+              type="text"
+              id="id1"
+              onChange={(e) => { setDetails({ ...details, programName: e.target.value }) }}
+              placeholder="Enter the program name"
+              className={`flex h-15 mb-5 mt-3 ml-3 pl-4 w-full items-center justify-center rounded-xl border p-2 text-lg outline-none bg-formBg`}
+            />
+
             <div className="w-full px-3 mb-6 md:mb-0">
               <label
                 htmlFor="progType"
@@ -102,57 +102,19 @@ const Promotion = () => {
               </div>
             </div>
 
-            <div className="w-full mt-6 px-3 mb-6 md:mb-0">
-              <label
-                htmlFor="progType"
-                className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
-              >
-                Usage Limit
-              </label>
-              <div className="grid grid-cols-2 mt-3">
-                <div className="mr-4">
-                  <div className="relative">
-                    <select
-                      value={details.usage.type}
-                      onChange={(e) => {
-                        let x = e.target.value;
-                        e.target.value = "unlimited" ? setDetails({ ...details, usage: { type: x, limit: -1 } }) : setDetails({ ...details, usage: { type: x, limit: details.usage.limit } })
-                      }}
-                      className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                      <option value="limited">Limited</option>
-                      <option value="unlimited">Unlimited</option>
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="">
-                  <input
-                    value={details.usage.limit}
-                    onChange={(e) => { setDetails({ ...details, usage: { type: details.usage.type, limit: e.target.value } }) }}
-                    type="text"
-                    id="id1"
-                    placeholder="Enter usage limit"
-                    disabled={details.usage.type === "unlimited"? true: false}
-                    className={`flex h-15 w-full items-center justify-center rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
-                  />
-                </div>
-              </div>
-            </div>
             <div className="w-full mt-7 px-3 mb-6 md:mb-0">
               <label
                 htmlFor="condRules"
-                className={`text-xl mt-6 text-navy-700 dark:text-white ml-3 font-bold`}
+                className={`text-xl mt-9 text-navy-700 dark:text-white ml-3 font-bold`}
               >
-                Conditions Rule
+                Conditions Rules :
               </label>
               <br />
-              <div className="mt-2">
+              <div className="mt-4">
                 <label
                   htmlFor="minSpent"
-                  className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
+                  className={`text-lg text-navy-700 dark:text-white ml-3 font-bold`}
                 >
                   Minimum purchase &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 </label>
@@ -161,7 +123,7 @@ const Promotion = () => {
                   type="text"
                   id="id1"
                   onChange={(e) => { setDetails({ ...details, minPurchase: e.target.value }) }}
-                  placeholder="Enter minimum purchase amount"
+                  placeholder="Min purchase amount"
                   disabled={false}
                   className={`mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                 />
@@ -246,43 +208,85 @@ const Promotion = () => {
             </div>
           </div>
 
-
-          <div className="flex justify-center">
-            <div className="">
+          <div className="">
+            <div className="w-full px-3 mb-6 md:mb-0">
               <label
-                htmlFor="validity"
+                htmlFor="progType"
                 className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
               >
-                Validity
+                Usage Limit
               </label>
-              <div className="mt-3 display-none">
-                <Calendar
+              <div className="grid grid-cols-2 mt-3">
+                <div className="mr-4">
+                  <div className="relative">
+                    <select
+                      value={details.usage.type}
+                      onChange={(e) => {
+                        let x = e.target.value;
+                        e.target.value = "unlimited" ? setDetails({ ...details, usage: { type: x, limit: -1 } }) : setDetails({ ...details, usage: { type: x, limit: details.usage.limit } })
+                      }}
+                      className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                      <option value="limited">Limited</option>
+                      <option value="unlimited">Unlimited</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                    </div>
+                  </div>
+                </div>
 
-                  value={selectedDay}
-                  colorPrimary="#422afb" // added this
-                  onChange={(e) => {
-                    // let x = e.target.value;
-                    console.log(e);
-                    setDetails({
-                      ...details, expiryDate: {
+                <div className="">
+                  <input
+                    value={details.usage.limit}
+                    onChange={(e) => { setDetails({ ...details, usage: { type: details.usage.type, limit: e.target.value } }) }}
+                    type="text"
+                    id="id1"
+                    placeholder="Enter usage limit"
+                    disabled={details.usage.type === "unlimited" ? true : false}
+                    className={`flex h-15 w-full mb-5 items-center justify-center rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+                  />
+                </div>
+              </div>
+
+              <label
+                  htmlFor="validity"
+                  className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}
+                >
+                  Validity
+                </label>
+            </div>
+            <div className="flex justify-center mt-2">
+              <div className="">
+
+                <div className="mt-3 display-none">
+                  <Calendar
+
+                    value={selectedDay}
+                    colorPrimary="#422afb" // added this
+                    onChange={(e) => {
+                      // let x = e.target.value;
+                      console.log(e);
+                      setDetails({
+                        ...details, expiryDate: {
+                          year: e.year,
+                          month: e.month,
+                          day: e.day
+                        }
+                      })
+                      setSelectedDay({
                         year: e.year,
                         month: e.month,
                         day: e.day
-                      }
-                    })
-                    setSelectedDay({
-                      year: e.year,
-                      month: e.month,
-                      day: e.day
-                    })
-                  }}
-                  shouldHighlightWeekends
-                />
-              </div>
-              <div className="content-end">
-                <button type="submit" class="bg-krishSecondary mt-7 w-1/2 hover:bg-blue-700 text-blue font-bold py-2 px-4 rounded-xl border">
-                  Button
-                </button>
+                      })
+                    }}
+                    shouldHighlightWeekends
+                  />
+                </div>
+                <div className="content-end">
+                  <button type="submit" class="bg-krishSecondary mt-7 w-1/2 hover:bg-blue-700 text-blue font-bold py-2 px-4 rounded-xl border">
+                    Button
+                  </button>
+                </div>
               </div>
             </div>
           </div>
