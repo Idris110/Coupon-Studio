@@ -11,7 +11,7 @@ import List from "views/admin/promotion/List";
 import DeployCoupon from "views/admin/promotion/DeployCoupon";
 import AddEcom from "views/admin/promotion/AddEcom";
 import CouponDetails from "views/admin/promotion/CouponDetails";
-
+import CustomerSpecific from "views/admin/promotion/customerSpecific";
 // Auth Imports
 import SignIn from "views/auth/SignIn";
 
@@ -80,28 +80,35 @@ const routes = [
     layout: "/admin",
     path: "listPromo",
     icon: <MdHome className="h-6 w-6" />,
-    component: <List/>,
+    component: <List />,
   },
   {
     name: "Deploy Coupon",
     layout: "/admin",
     path: "deployCoupon",
     icon: <MdHome className="h-6 w-6" />,
-    component: <DeployCoupon/>,
+    component: <DeployCoupon />,
   },
   {
     name: "Add Ecommerce",
     layout: "/admin",
     path: "addEcom",
     icon: <MdHome className="h-6 w-6" />,
-    component: <AddEcom/>,
+    component: <AddEcom />,
+  },
+  {
+    name: "User Specific Coupon",
+    layout: "/admin",
+    path: "couponDetails",
+    icon: <MdBarChart className="h-6 w-6" />,
+    component: <CustomerSpecific />,
   },
   {
     name: "View Coupon Details",
     layout: "/admin",
     path: "couponDetails",
     icon: <MdBarChart className="h-6 w-6" />,
-    component: <CouponDetails/>,
-  }
+    component: <CouponDetails />,
+  },
 ];
 export default routes;
