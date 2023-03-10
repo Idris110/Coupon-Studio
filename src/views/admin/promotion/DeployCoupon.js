@@ -60,7 +60,7 @@ function DeployCoupon() {
     }
   };
   return (
-    <div className="mt-8">
+    <div className="mt-8 w-1/2">
       <div className="mb-6 w-full px-3 md:mb-0">
         <label
           htmlFor="Ecoms"
@@ -135,9 +135,9 @@ function DeployCoupon() {
       <div className="mt-7 ml-3">
         <label
           htmlFor="minSpent"
-          className={`mt-2 ml-3 text-lg font-bold text-navy-700 dark:text-white`}
+          className={`mt-5 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
         >
-          Minimum purchase &nbsp; &nbsp; &nbsp;
+          Number of coupons &nbsp; &nbsp; &nbsp;
         </label>
 
         <input
@@ -148,7 +148,7 @@ function DeployCoupon() {
           id="id1"
           placeholder=""
           disabled={false}
-          className={`h-15 mt-3 rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
+          className={`h-15 mt-3 flex rounded-xl border bg-formBg p-2 pl-5 text-xl outline-none`}
         />
       </div>
 
@@ -156,7 +156,7 @@ function DeployCoupon() {
         <button
           onClick={register}
           type="submit"
-          className="text-blue mt-7 w-3/5 rounded-xl border bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme"
+          className="text-blue mt-7 w-3/5 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
         >
           Generate Coupon
         </button>

@@ -6,7 +6,7 @@ export default function AddEcom() {
   const [user, setUser] = useState({
     companyName: "",
     companySite: "",
-    companyUniqueId:""
+    companyUniqueId: ""
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,7 +14,7 @@ export default function AddEcom() {
       ...user,
       [name]: value,
     });
-    
+
     // console.log(user.companyName);
   };
   const register = async () => {
@@ -28,7 +28,7 @@ export default function AddEcom() {
     if (
       companyName &&
       companySite &&
-      companyUniqueId 
+      companyUniqueId
     ) {
       console.log(user);
       let result = await fetch("http://localhost:3000/company", {
@@ -50,7 +50,7 @@ export default function AddEcom() {
   };
   return (
     <div className="flex w-full flex-col gap-5">
-      <form action="" className="mt-5">
+      <form action="" className="mt-7">
         <label
           htmlFor="id1"
           className={`mt-5 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
@@ -64,11 +64,11 @@ export default function AddEcom() {
           type="text"
           id="id1"
           placeholder="Enter the Company Name"
-          className={`h-19 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-2xl outline-none`}
+          className={`h-19 flex mt-3 mb-6 w-1/2 items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-xl outline-none`}
         />
         <label
           htmlFor="id1"
-          className={`mt-5 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
+          className={`ml-3 text-xl font-bold text-navy-700 dark:text-white`}
         >
           Company Site
         </label>
@@ -78,8 +78,8 @@ export default function AddEcom() {
           onChange={handleChange}
           type="text"
           id="id1"
-          placeholder="Enter the Company Site"
-          className={`h-19 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-2xl outline-none`}
+          placeholder="Enter the Company Website"
+          className={`h-19 flex mt-3 mb-6 w-1/2 items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-xl outline-none`}
         />
         <label
           htmlFor="id1"
@@ -94,10 +94,13 @@ export default function AddEcom() {
           type="text"
           id="id1"
           placeholder="Enter the Company Unique Id"
-          className={`h-19 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-2xl outline-none`}
+          className={`h-19 flex mt-3 mb-6 w-1/2 items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-xl outline-none`}
         />
-        <button className="appButton" onClick={register} type="button">
-          Sign Up
+        <button
+          onClick={register} type="button"
+          className="text-blue mt-7 w-1/4 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme hover:text-lightPrimary"
+        >
+          Register
         </button>
       </form>
     </div>
