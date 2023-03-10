@@ -12,6 +12,7 @@ import DeployCoupon from "views/admin/promotion/DeployCoupon";
 import AddEcom from "views/admin/promotion/AddEcom";
 import CouponDetails from "views/admin/promotion/CouponDetails";
 import CustomerSpecific from "views/admin/promotion/customerSpecific";
+import Giftcard from "views/admin/promotion/Giftcard";
 // Auth Imports
 import SignIn from "views/auth/SignIn";
 
@@ -74,6 +75,13 @@ const routes = [
     path: "newPromo",
     icon: <MdHome className="h-6 w-6" />,
     component: <Promo />,
+  },
+  {
+    name: "Create Giftcard",
+    layout: "/admin",
+    path: "newGiftcard",
+    icon: <MdHome className="h-6 w-6" />,
+    component: <Giftcard />,
   },
   {
     name: "Promotions List",
