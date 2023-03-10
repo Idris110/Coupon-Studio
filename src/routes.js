@@ -70,9 +70,9 @@ const routes = [
     component: <RTLDefault />,
   },
   {
-    name: "Create Promotions",
+    name: "Static Coupon",
     layout: "/admin",
-    path: "newPromo",
+    path: "createStaticCoupon",
     icon: <MdHome className="h-6 w-6" />,
     component: <Promo />,
   },

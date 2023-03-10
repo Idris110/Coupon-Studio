@@ -63,7 +63,7 @@ const Promotion = () => {
               htmlFor="id1"
               className={`text-xl mt-5 mb-5 text-navy-700 dark:text-white ml-6 font-bold`}
             >
-              Program Name
+              Promotion Name
             </label>
             <input
               value={details.programName}
@@ -79,7 +79,7 @@ const Promotion = () => {
                 htmlFor="progType"
                 className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
               >
-                Program Type
+                Promotion Type
               </label>
               <div className="relative">
                 <select name="couponType"
@@ -146,7 +146,7 @@ const Promotion = () => {
                   className={`mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                 />
               </div>
-              <div className="mt-2">
+              <div className="mt-5">
                 <label
                   htmlFor="prodType"
                   className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
@@ -154,7 +154,7 @@ const Promotion = () => {
                   On product &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 </label>
 
-                <input
+                {/* <input
                   value={details.porductType}
                   type="text"
                   id="id1"
@@ -162,7 +162,23 @@ const Promotion = () => {
                   placeholder="Product Type"
                   disabled={false}
                   className={`mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
-                />
+                /> */}
+                <div className="relative mt-1">
+                  <select name="couponType"
+                    value={details.couponType}
+                    onChange={(e) => {
+                      let x = e.target.value
+                      setDetails({ ...details, couponType: x })
+                    }}
+                    className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <option value="Clothing">Clothing</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Furniture">Furniture</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -171,7 +187,7 @@ const Promotion = () => {
                 htmlFor="condRules"
                 className={`text-xl mt-6 text-navy-700 dark:text-white ml-3 font-bold`}
               >
-                Reward
+                Reward :
               </label>
               <br />
               <div className="grid grid-cols-2 mt-3">
@@ -206,6 +222,25 @@ const Promotion = () => {
               </div>
 
             </div>
+
+
+
+            <div className="mt-8 ml-3">
+              <label
+                htmlFor="targetAud"
+                className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
+              >
+                Target Audience
+              </label>
+
+              <input
+                type="text"
+                id="id1"
+                placeholder="Max applicable discount"
+                disabled={false}
+                className={`flex items-center justify-center w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+              />
+            </div>
           </div>
 
           <div className="">
@@ -214,7 +249,7 @@ const Promotion = () => {
                 htmlFor="progType"
                 className={`text-xl mt-5 text-navy-700 dark:text-white ml-3 font-bold`}
               >
-                Usage Limit
+                Redemption Limit
               </label>
               <div className="grid grid-cols-2 mt-3">
                 <div className="mr-4">
@@ -249,13 +284,15 @@ const Promotion = () => {
               </div>
 
               <label
-                  htmlFor="validity"
-                  className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}
-                >
-                  Validity
-                </label>
+                htmlFor="validity"
+                className={`text-xl mt-3 text-navy-700 dark:text-white ml-3 font-bold block`}
+              >
+                Validity
+              </label>
             </div>
-            <div className="flex justify-center mt-2">
+
+
+            <div className="flex justify-center">
               <div className="">
 
                 <div className="mt-3 display-none">
@@ -282,12 +319,65 @@ const Promotion = () => {
                     shouldHighlightWeekends
                   />
                 </div>
-                <div className="content-end">
-                  <button type="submit" class="bg-krishSecondary mt-7 w-1/2 hover:bg-blue-700 text-blue font-bold py-2 px-4 rounded-xl border">
-                    Button
-                  </button>
+              </div>
+            </div>
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-3 gap-6">
+              <div className="mt-5">
+                <label
+                  htmlFor="targetAud"
+                  className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
+                >
+                  Length of Coupon
+                </label>
+
+                <input
+                  type="text"
+                  id="id1"
+                  placeholder="Max applicable discount"
+                  disabled={false}
+                  className={`flex items-center justify-center w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+                />
+              </div>
+
+              <div className="mt-5">
+                <label
+                  htmlFor="targetAud"
+                  className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
+                >
+                  Code type
+                </label>
+
+                <div className="relative mt-1">
+                  <select name="couponType"
+                    value={details.couponType}
+                    className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <option value="Coupons">AlphaNumeric</option>
+                    <option value="LoyaltyCards">Numeric</option>
+                    <option value="Promotions">Alphabetic</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div className="flex justify-center">
+                <button type="submit" class="text-blue w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary">
+                  Generate Coupon
+                </button>
+              </div>
+              
+              <input
+                  type="text"
+                  id="id1"
+                  placeholder="Or Enter Custom Code"
+                  disabled={false}
+                  className={`flex items-center justify-center w-full h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+                />
             </div>
           </div>
         </div>
