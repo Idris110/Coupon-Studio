@@ -129,9 +129,9 @@ const routes = [
     layout: "/admin",
     path: "newsletter",
     icon: <MdMarkunreadMailbox className="h-6 w-6" />,
+    component: <Newsletter />,
   },
   {
-    component: <Newsletter />,
     name: "File Reader",
     layout: "/admin",
     path: "csvRead",
