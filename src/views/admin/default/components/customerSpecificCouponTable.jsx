@@ -71,7 +71,7 @@ const ComplexTable = (props) => {
                   {row.cells.map((cell, index) => {
                     let data = "";
                     console.log(cell,"cell");
-                    if (cell.column.Header === "Program Name") {
+                    if (cell.column.Header === "Promotion Name") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
                           {cell.value}
@@ -96,13 +96,13 @@ const ComplexTable = (props) => {
                     //     </div>
                     //   );
                     // }
-                    else if (cell.column.Header === "Limit") {
+                    else if (cell.column.Header === "Promotion Type") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
                           {cell.value}
                         </p>
                       );
-                    } else if (cell.column.Header === "Company Id") {
+                    } else if (cell.column.Header === "Edit") {
                       //   data = <Progress width="w-[108px]" value={cell.value} />;
                       data = (
                         // <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -110,7 +110,7 @@ const ComplexTable = (props) => {
                         // </p>
                         <>
                           <button
-                          value={cell.value}
+                            value={cell.value}
                             onClick={edit}
                             type="submit"
                             className="text-blue mt-7 w-3/5 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
@@ -119,7 +119,7 @@ const ComplexTable = (props) => {
                           </button>
                         </>
                       );
-                    } else if (cell.column.Header === "Edit") {
+                    } else if (cell.column.Header === "Delete") {
                       //   data = <Progress width="w-[108px]" value={cell.value} />;
                       data = (
                         // <p className="text-sm font-bold text-navy-700 dark:text-white">

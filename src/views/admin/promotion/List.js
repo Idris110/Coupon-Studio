@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ComplexTable from "views/admin/default/components/CouponTable";
+import ComplexTable from "views/admin/default/components/customerSpecificCouponTable";
 const columnsDataComplex = [
   {
     Header: "Company Name",

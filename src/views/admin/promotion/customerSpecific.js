@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
-import ComplexTable from "views/admin/default/components/CouponTable";
+import ComplexTable from "views/admin/default/components/customerSpecificCouponTable";
 const Promotion = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {

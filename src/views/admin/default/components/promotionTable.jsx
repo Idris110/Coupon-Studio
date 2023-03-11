@@ -50,7 +50,6 @@ const ComplexTable = (props) => {
             {headerGroups.map((headerGroup, index) => (
               <tr {...headerGroup.getHeaderGroupProps()} key={index}>
                 {headerGroup.headers.map((column, index) => (
-                    
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={index}
@@ -72,7 +71,16 @@ const ComplexTable = (props) => {
                   {row.cells.map((cell, index) => {
                     let data = "";
                     // console.log(cell, "cell");
-                    if (cell.column.Header === "User Id") {
+                    if (cell.column.Header === "Promotion Name") {
+                        // console.log(cell.value);
+                      data = (
+                        <p className="text-sm font-bold text-navy-700 dark:text-white">
+                          {cell.value}
+                        </p>
+                      );
+                    }
+                    else if (cell.column.Header === "Promotion Type") {
+                    //   console.log(cell.value);
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
                           {cell.value}

@@ -97,7 +97,7 @@ const Giftcard = () => {
     };
     const columnsDataComplex = [
       {
-        Header: "Program Name",
+        Header: "User Id",
         accessor: "name",
       },
       {
@@ -105,11 +105,11 @@ const Giftcard = () => {
         accessor: "date",
       },
       {
-        Header: "Company Id",
+        Header: "Edit",
         accessor: "progress",
       },
       {
-        Header: "Edit",
+        Header: "Delete",
         accessor: "status",
       },
     ];
@@ -148,12 +148,6 @@ const Giftcard = () => {
     };
     return (
       <div className="flex w-full flex-col gap-5">
-        <ComplexTable
-          edit={Edit}
-          delet={Delete}
-          columnsData={columnsDataComplex}
-          tableData={table}
-        />
         <form onSubmit={handleSubmit} action="" className="mt-5">
           <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-1 md:gap-12 lg:grid-cols-1 xl:grid-cols-1">
             <div className="">
@@ -264,6 +258,7 @@ const Giftcard = () => {
               </div>
             </div>
           </div>
+
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
             <div className="flex justify-center">
               <button
@@ -288,6 +283,7 @@ const Giftcard = () => {
               className={` h-15 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
             />
           </div>
+
           <button
             disabled={!disables}
             onClick={updateData}
@@ -297,6 +293,12 @@ const Giftcard = () => {
             Update
           </button>
         </form>
+        <ComplexTable
+          edit={Edit}
+          delet={Delete}
+          columnsData={columnsDataComplex}
+          tableData={table}
+        />
       </div>
     );
 }
