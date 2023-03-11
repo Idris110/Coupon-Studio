@@ -1,26 +1,26 @@
 [
   {
-    "name": "Marketplace",
+    "name": "NEWUSER20",
     "status": "Approved",
     "date": "24.Jan.2021",
-    "progress": 30
+    "progress": 38
   },
   {
-    "name": "Marketplace",
+    "name": "CHECKOUT10",
     "status": "Disable",
     "date": "30.Dec.2021",
-    "progress": 30
+    "progress": 28
   },
   {
-    "name": "Marketplace",
+    "name": "FREEBIE",
     "status": "Error",
     "date": "20.May.2021",
-    "progress": 30
+    "progress": 35
   },
   {
-    "name": "Marketplace",
+    "name": "LOAYALTY20",
     "status": "Approved",
     "date": "12.Jul.2021",
-    "progress": 30
+    "progress": 60
   }
 ]
