@@ -1,8 +1,38 @@
+import { useState } from "react";
 import InputField from "components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
 import Checkbox from "components/checkbox";
 
 export default function SignIn() {
+
+  const [form, setForm] = useState({
+    storeURL: "",
+    username: "",
+    password: "",
+    confirmPassword: ""
+  });
+  const [isSignup, setIsSignup] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleShowPassword = () => setShowPassword(!showPassword);
+
+  const switchMode = () => {
+    setForm({
+      storeURL: "",
+      username: "",
+      password: "",
+      confirmPassword: ""
+    });
+    setIsSignup((prevIsSignup) => !prevIsSignup);
+    setShowPassword(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+
+  };
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
   return (
     <div className="mt-16 mb-16 flex h-full w-full items-center justify-center px-2 md:mx-0 md:px-0 lg:mb-10 lg:items-center lg:justify-start">
       {/* Sign in section */}
@@ -45,6 +75,7 @@ export default function SignIn() {
           id="password"
           type="password"
         />
+        
         {/* Checkbox */}
         <div className="mb-4 flex items-center justify-between px-2">
           <div className="flex items-center">
