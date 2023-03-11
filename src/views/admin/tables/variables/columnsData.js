@@ -82,11 +82,11 @@ export const newsletterColumns = [
   },
   {
     Header: "EMAIL",
-    accessor: "progress",
+    accessor: "email",
   },
   {
     Header: "TYPE",
-    accessor: "quantity",
+    accessor: "type",
   },
   {
     Header: "DATE",
