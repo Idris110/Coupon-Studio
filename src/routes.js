@@ -6,6 +6,7 @@ import NFTMarketplace from "views/admin/marketplace";
 import Profile from "views/admin/profile";
 import DataTables from "views/admin/tables";
 import RTLDefault from "views/rtl/default";
+
 import Promo from "views/admin/promotion/Promotion";
 import List from "views/admin/promotion/List";
 import DeployCoupon from "views/admin/promotion/DeployCoupon";
@@ -23,6 +24,14 @@ import {
   MdBarChart,
   MdPerson,
   MdLock,
+  MdAnnouncement,
+  MdCardGiftcard,
+  MdLoyalty,
+  MdMarkunreadMailbox,
+  MdFireplace,
+  MdList,
+  MdSupervisedUserCircle,
+  MdStackedBarChart,
 } from "react-icons/md";
 
 const routes = [
@@ -66,50 +75,50 @@ const routes = [
     name: "Static Coupon",
     layout: "/admin",
     path: "createStaticCoupon",
-    icon: <MdHome className="h-6 w-6" />,
+    icon: <MdLoyalty className="h-6 w-6" />,
     component: <Promo />,
-  },
-  {
-    name: "Create Giftcard",
-    layout: "/admin",
-    path: "newGiftcard",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <Giftcard />,
-  },
-  {
-    name: "Promotions List",
-    layout: "/admin",
-    path: "listPromo",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <List />,
-  },
-  {
-    name: "Deploy Coupon",
-    layout: "/admin",
-    path: "deployCoupon",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <DeployCoupon />,
   },
   {
     name: "Dynamic Coupon",
     layout: "/admin",
     path: "dynamicCoupon",
-    icon: <MdHome className="h-6 w-6" />,
+    icon: <MdStackedBarChart className="h-6 w-6" />,
     component: <DynamicCoupon />,
   },
+  {
+    name: "Create Giftcard",
+    layout: "/admin",
+    path: "newGiftcard",
+    icon: <MdCardGiftcard className="h-6 w-6" />,
+    component: <Giftcard />,
+  },
+  // {
+  //   name: "Promotions List",
+  //   layout: "/admin",
+  //   path: "listPromo",
+  //   icon: <MdList className="h-6 w-6" />,
+  //   component: <List />,
+  // },
+  // {
+  //   name: "Deploy Coupon",
+  //   layout: "/admin",
+  //   path: "deployCoupon",
+  //   icon: <MdHome className="h-6 w-6" />,
+  //   component: <DeployCoupon />,
+  // },
   {
     name: "User Specific Coupon",
     layout: "/admin",
     path: "userSpecific",
-    icon: <MdBarChart className="h-6 w-6" />,
+    icon: <MdSupervisedUserCircle className="h-6 w-6" />,
     component: <CustomerSpecific />,
   },
-  {
-    name: "View Coupon Details",
-    layout: "/admin",
-    path: "couponDetails",
-    icon: <MdBarChart className="h-6 w-6" />,
-    component: <CouponDetails />,
-  },
+  // {
+  //   name: "View Coupon Details",
+  //   layout: "/admin",
+  //   path: "couponDetails",
+  //   icon: <MdBarChart className="h-6 w-6" />,
+  //   component: <CouponDetails />,
+  // },
 ];
 export default routes;

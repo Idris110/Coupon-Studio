@@ -318,9 +318,7 @@ const Promotion = () => {
                       let x = e.target.value;
                       setDetails({ ...details, onProductType: x });
                     }}
-                    className="mt-3 mr-3 block w-full appearance-none rounded-xl border border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-                    id="grid-state"
-                  >
+                    className="block appearance-none w-full bg-formBg butborder border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option value="Clothing">Clothing</option>
                     <option value="Electronics">Electronics</option>
                     <option value="Furniture">Furniture</option>
