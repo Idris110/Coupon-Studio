@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from "react";
 import ComplexTable from "views/admin/default/components/customerSpecificCouponTable";
-const columnsDataComplex = [
-  {
-    Header: "Company Name",
-    accessor: "name",
-  },
-  // {
-  //   Header: "STATUS",
-  //   accessor: "status",
-  // },
-  {
-    Header: "Company Url",
-    accessor: "date",
-  },
-  {
-    Header: "Company Id",
-    accessor: "progress",
-  },
-];
+import ColumnsTable from "../tables/components/ColumnsTable";
+import tableDataColumns from "../../../views/admin/tables/variables/tableDataColumns.json"
+import {
+  columnsDataDevelopment,
+  columnsDataCheck,
+  columnsDataColumns,
+  columnsDataComplex,
+} from "../../../views/admin/tables/variables/columnsData.js";
+// const columnsDataComplex = [
+//   {
+//     Header: "Coupon Code",
+//     accessor: "name",
+//   },
+//   // {
+//   //   Header: "STATUS",
+//   //   accessor: "status",
+//   // },
+//   {
+//     Header: "Discount Type",
+//     accessor: "type",
+//   },
+//   {
+//     Header: "Discount",
+//     accessor: "number",
+//   },
+// ];
 // const tableDataComplex = [
 //   {
 //     name: "Marketplace",
@@ -63,10 +71,10 @@ const List = () => {
   return (
     <>
       <div>List</div>
-      <ComplexTable
-        columnsData={columnsDataComplex}
-        tableData={products}
-      />
+      <ColumnsTable 
+      columnsData={columnsDataColumns}
+       tableData={tableDataColumns}>
+      </ColumnsTable>
     </>
   );
 };
