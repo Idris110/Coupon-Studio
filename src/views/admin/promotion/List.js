@@ -13,14 +13,30 @@ const List = (props) => {
         maxDiscount="150"
         redemptions="2" />
         <CustomCard
-        couponCode="GET50"
+        couponCode="GET100"
         date="11th March 2023"
-        category="Electronics"
+        category="Food"
+        minPurchase="1000"
+        discountType="Absolute"
+        maxDiscount="100"
+        redemptions="3" />
+        <CustomCard
+        couponCode="NEW25"
+        date="11th March 2023"
+        category="Clothing"
         minPurchase="1000"
         discountType="Percentage"
-        discount="50"
-        maxDiscount="600"
-        redemptions="2" />
+        maxDiscount="500"
+        redemptions="1" />
+        <CustomCard
+        couponCode="CHECKOUT20"
+        date="11th March 2023"
+        category="Medicine"
+        minPurchase="500"
+        discountType="Percentage"
+        discount="20"
+        maxDiscount="300"
+        redemptions="5" />
     </>
   );
 };
