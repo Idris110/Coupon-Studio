@@ -80,6 +80,7 @@ const Promotion = () => {
     setDetails(result.user);
     console.log(details, "result");
     getProducts();
+    clear();
 
   }
   const Delete = async (e) => {
@@ -113,6 +114,35 @@ const Promotion = () => {
     // localStorage.setItem("admin", JSON.stringify(result));
     // navigate("/");
   };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+  }
+
+  const clear = () => {
+    setDetails({
+      programName: "",
+      couponType: "",
+      usage: {
+        type: "",
+        limit: 1,
+      },
+      minPurchase: 0,
+      maxDiscount: 0,
+      porductType: "",
+      reward: {
+        type: "",
+        amount: 0,
+      },
+      expiryDate: {
+        year: 2023,
+        month: 3,
+        day: 11,
+      },
+    });
+  }
+
   return (
     <div className="flex w-full flex-col gap-5">
       <ComplexTable edit={Edit} delet={Delete} columnsData={columnsDataComplex} tableData={products} />
@@ -302,7 +332,7 @@ const Promotion = () => {
             </div>
 
             <div className="mt-6 w-full px-3">
-            <label
+              <label
                 htmlFor="progType"
                 className={`mt-5 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
               >
@@ -476,7 +506,9 @@ const Promotion = () => {
                 </button>
               </div>
               <div className="flex justify-center">
-                <button type="submit" class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary">
+                <button
+                  onClick={handleUpdate}
+                  class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary">
                   Update Coupon
                 </button>
               </div>
