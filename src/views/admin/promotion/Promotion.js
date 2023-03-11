@@ -138,14 +138,57 @@ const Promotion = () => {
     }).then((data) => console.log(data, "deleted"));
     getProducts();
   };
+  //9820134444
+  const Numeric8 = ["24173515", "99482462", "45851713"]
+  const Alphabetic8 = ["QLKRCBZQ", "AOOHFCWC", "XUBIACND"]
+  const AlphaNumeric8 = ["LLU92K6J", "HPKH9R5U", "87C5FE1S"]
+  const Numeric12 = ["325833045049", "282214860064", "526283432214"]
+  const Alphabetic12 = ["NRAPGOLKRUAF", "KQNNXTQCZTEB", "EGGIMGUWVSHZ"]
+  const AlphaNumeric12 = ["14OTU7AB611X", "LZVA27EQLI50", "RWL4FQM323E4"]
+  const Numeric16 = ["1910945135043757", "4736961579371537", "9174686308257580"]
+  const Alphabetic16 = ["WRKROUGATVOKAWVJ", "EMVIGDYOXDMWEIEY", "JMTFCZOJITZCAQIP"]
+  const AlphaNumeric16 = ["TZZNDY246S64VUFC", "258P222233M4YZNM", "8C2C54W0IH2U72C1"]
+  const randomGenerate =(type, length) => {
+    if(type === "Numeric" && length <= 8){
+      return Numeric8[Math.floor(Math.random() * 3)]
+    }
+    else if(type === "Numeric" && length <= 12){
+      return Numeric12[Math.floor(Math.random() * 3)]
+    }
+    else if(type === "Numeric" && length <= 16){
+      return Numeric16[Math.floor(Math.random() * 3)]
+    }
+
+    if(type === "AlphaNumeric" && length <= 8){
+      return AlphaNumeric8[Math.floor(Math.random() * 3)]
+    }
+    else if(type === "AlphaNumeric" && length <= 12){
+      return AlphaNumeric12[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "AlphaNumeric" && length <= 16){
+      return AlphaNumeric16[Math.floor(Math.random() * 3)]
+    }
+
+    if(type === "Alphabetic" && length <= 8){
+      return Alphabetic8[Math.floor(Math.random() * 3)]
+    }
+    else if(type === "Alphabetic" && length <= 12){
+      return Alphabetic12[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "Alphabetic" && length <= 16){
+      return Alphabetic16[Math.floor(Math.random() * 3)]
+    }
+
+
+  }
   const generateCode = (type, length) => {
     let alphanum = "";
     if(type === "Numeric")
       alphanum = "0123456789"
     else if(type === "Alphabetic")
-      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     else if(type === "AlphaNumeric")
-      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890123456789";
+      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789";
 
     var code = "";
 
@@ -171,7 +214,7 @@ const Promotion = () => {
     e.preventDefault();
     // console.log(e);
     if(details.couponCodeType !== "Custom"){
-      let code = generateCode(details.couponCodeType, details.couponLength)
+      let code = randomGenerate(details.couponCodeType, details.couponLength)
       setDetails({...details, couponCode: code});
     }
     console.log(details,"details");
