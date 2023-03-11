@@ -3,11 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function DynamicCoupon() {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    companyName: "",
-    companySite: "",
-    companyUniqueId: ""
-  });
   const [details, setDetails] = useState({
     redemption: "",
     promobudget: "",
@@ -20,46 +15,64 @@ export default function DynamicCoupon() {
     preventCartAbandonment: false
 
   });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
+  useEffect(() => {
+    getProducts();
+    // makeTable();
+  }, []);
 
-    // console.log(user.companyName);
+  const getProducts = async () => {
+    let result = await fetch(
+      `http://localhost:3000/dynamicCoupon/get/640c9ddd55a65c48a04b7264`
+    );
+    result = await result.json();
+    // const newData = result.map((item) => {
+    //   return {
+    //     name: item.emailId,
+    //     date: item.amt,
+    //     progress: item._id,
+    //     status: item._id,
+    //   };
+    // });
+    setDetails(result.user);
+    console.log(details);
   };
   const register = async () => {
     // console.log("ll");
     console.log(details);
-    const {
-      companyName,
-      companySite,
-      companyUniqueId
-    } = user;
 
-    if (
-      companyName &&
-      companySite &&
-      companyUniqueId
-    ) {
-      console.log(user);
-      let result = await fetch("http://localhost:3000/company", {
-        method: "post",
-        body: JSON.stringify(user),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      result = await result.json();
+    // if (
+    //   companyName &&
+    //   companySite &&
+    //   companyUniqueId
+    // ) {
+      // console.log(user);
+      const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(details),
+      };
+      const response = await fetch(
+        `http://localhost:3000/dynamicCoupon/updateGift/640c9ddd55a65c48a04b7264`,
+        requestOptions
+      );
+      const data = await response.json();
+      console.log(data);
+      // let result = await fetch("http://localhost:3000/dynamicCoupon", {
+      //   method: "post",
+      //   body: JSON.stringify(details),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json",
+      //   },
+      // });
+      // result = await result.json();
       //   console.log(result, "result");
-      localStorage.setItem("admin", JSON.stringify(result));
+      // localStorage.setItem("admin", JSON.stringify(result));
       // navigate("/");
       // <Redirect to="/" />;
-    } else {
-      alert("invalid");
-    }
+    // } else {
+    //   alert("invalid");
+    // }
   };
   return (
     <div className="flex w-full flex-col gap-5">

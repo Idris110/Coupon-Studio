@@ -114,7 +114,7 @@ const Giftcard = () => {
       },
     ];
     const Edit = async (e) => {
-      console.log(e.target.value);
+      // console.log(e.target.value);
     //   console.log(details);
       let id = e.target.value;
       let result = await fetch(`http://localhost:3000/GiftCard/get/${id}`);
