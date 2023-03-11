@@ -399,7 +399,7 @@ const Promotion = () => {
                     shouldHighlightWeekends
                   />
                 </div>
-                <div className="content-end">
+                <div className="">
                   <button
                     type="submit"
                     class="text-blue mt-7 w-1/2 rounded-xl border bg-krishSecondary py-2 px-4 font-bold hover:bg-blue-700"
