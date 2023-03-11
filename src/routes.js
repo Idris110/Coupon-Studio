@@ -37,6 +37,7 @@ import {
   MdList,
   MdSupervisedUserCircle,
   MdStackedBarChart,
+  MdOutlineFilePresent,
 } from "react-icons/md";
 
 const routes = [
@@ -139,12 +140,12 @@ const routes = [
     icon: <MdSupervisedUserCircle className="h-6 w-6" />,
     component: <CompanyDetails />,
   },
-  // {
-  //   name: "View Coupon Details",
-  //   layout: "/admin",
-  //   path: "couponDetails",
-  //   icon: <MdBarChart className="h-6 w-6" />,
-  //   component: <CouponDetails />,
-  // },
+  {
+    name: "Documentation",
+    layout: "/admin",
+    path: "docs",
+    icon: <MdOutlineFilePresent className="h-6 w-6" />,
+    component: <Documentation />,
+  },
 ];
 export default routes;
