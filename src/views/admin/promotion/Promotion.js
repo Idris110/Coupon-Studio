@@ -11,8 +11,13 @@ const Promotion = () => {
   }
   const [selectedDay, setSelectedDay] = useState(defaultValue);
   const [details, setDetails] = useState({
-    programName: "",
-    couponType: "",
+    promotionName: "",
+    promotionType: "",
+    onProductType: "Select Product",
+    targetAudience: "",
+    couponLength: "",
+    couponCodeType: "",
+    couponCode: "",
     usage: {
       type: "",
       limit: 1
@@ -66,10 +71,10 @@ const Promotion = () => {
               Promotion Name
             </label>
             <input
-              value={details.programName}
+              value={details.promotionName}
               type="text"
               id="id1"
-              onChange={(e) => { setDetails({ ...details, programName: e.target.value }) }}
+              onChange={(e) => { setDetails({ ...details, promotionName: e.target.value }) }}
               placeholder="Enter the program name"
               className={`flex h-15 mb-5 mt-3 ml-3 pl-4 w-full items-center justify-center rounded-xl border p-2 text-lg outline-none bg-formBg`}
             />
@@ -83,18 +88,18 @@ const Promotion = () => {
               </label>
               <div className="relative">
                 <select name="couponType"
-                  value={details.couponType}
+                  value={details.promotionType}
                   onChange={(e) => {
                     let x = e.target.value
-                    setDetails({ ...details, couponType: x })
+                    setDetails({ ...details, promotionType: x })
                   }}
                   className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                  <option value="Coupons">Coupons</option>
-                  <option value="LoyaltyCards">Loyalty Cards</option>
-                  <option value="Promotions">Promotions</option>
-                  <option value="DiscoutCode">Discount Code</option>
-                  <option value="BuyXgetY">Buy X get Y</option>
-                  <option value="NextOrder">Next Order Coupons</option>
+                  <option value="New Customer">New Customer</option>
+                  <option value="Existing Customer">Existing Customer</option>
+                  <option value="Returning Customer">Returning Customer</option>
+                  <option value="General Promotion">General Promotion</option>
+                  <option value="Loyalty Cards">Loyalty Cards</option>
+                  <option value="Buy X get Y">Buy X get Y</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
@@ -151,7 +156,7 @@ const Promotion = () => {
                   htmlFor="prodType"
                   className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
                 >
-                  On product &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  Select Product Category: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 </label>
 
                 {/* <input
@@ -165,10 +170,10 @@ const Promotion = () => {
                 /> */}
                 <div className="relative mt-1">
                   <select name="couponType"
-                    value={details.couponType}
+                    value={details.onProductType}
                     onChange={(e) => {
                       let x = e.target.value
-                      setDetails({ ...details, couponType: x })
+                      setDetails({ ...details, onProductType: x })
                     }}
                     className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option value="Clothing">Clothing</option>
@@ -234,6 +239,7 @@ const Promotion = () => {
               </label>
 
               <input
+                onChange={(e) => { setDetails({ ...details, targetAudience: e.target.value }) }}
                 type="text"
                 id="id1"
                 placeholder="Max applicable discount"
@@ -333,9 +339,11 @@ const Promotion = () => {
                 </label>
 
                 <input
+                  value={details.couponLength}
+                  onChange={(e) => { setDetails({ ...details, couponLength: e.target.value }) }}
                   type="text"
                   id="id1"
-                  placeholder="Max applicable discount"
+                  placeholder="Enter Coupon Length"
                   disabled={false}
                   className={`flex items-center justify-center w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                 />
@@ -351,7 +359,8 @@ const Promotion = () => {
 
                 <div className="relative mt-1">
                   <select name="couponType"
-                    value={details.couponType}
+                    value={details.promotionType}
+                    onChange={(e) => { setDetails({ ...details, promotionType: e.target.value }) }}
                     className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                     <option value="Coupons">AlphaNumeric</option>
                     <option value="LoyaltyCards">Numeric</option>
@@ -370,14 +379,16 @@ const Promotion = () => {
                   Generate Coupon
                 </button>
               </div>
-              
+
               <input
-                  type="text"
-                  id="id1"
-                  placeholder="Or Enter Custom Code"
-                  disabled={false}
-                  className={`flex items-center justify-center w-full h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
-                />
+                type="text"
+                id="id1"
+                value={details.couponCode}
+                onChange={(e) => { setDetails({ ...details, couponCode: e.target.value }) }}
+                placeholder="Or Enter Custom Code"
+                disabled={false}
+                className={`flex items-center justify-center w-full h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+              />
             </div>
           </div>
         </div>
