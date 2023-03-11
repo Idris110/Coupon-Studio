@@ -50,6 +50,7 @@ const ComplexTable = (props) => {
             {headerGroups.map((headerGroup, index) => (
               <tr {...headerGroup.getHeaderGroupProps()} key={index}>
                 {headerGroup.headers.map((column, index) => (
+                    
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={index}
@@ -70,7 +71,7 @@ const ComplexTable = (props) => {
                 <tr {...row.getRowProps()} key={index}>
                   {row.cells.map((cell, index) => {
                     let data = "";
-                    console.log(cell, "cell");
+                    // console.log(cell, "cell");
                     if (cell.column.Header === "Program Name") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">

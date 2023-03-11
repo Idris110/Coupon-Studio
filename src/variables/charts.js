@@ -258,13 +258,13 @@ export const barChartOptionsWeeklyRevenue = {
 
 export const lineChartDataTotalSpent = [
   {
-    name: "Revenue",
-    data: [50, 64, 48, 66, 49, 68],
+    name: "Coupon Spend",
+    data: [10, 24, 38, 46, 49, 55],
     color: "#4318FF",
   },
   {
-    name: "Profit",
-    data: [30, 40, 24, 46, 20, 46],
+    name: "Spend",
+    data: [10, 20, 24, 30, 36, 39],
     color: "#6AD2FF",
   },
 ];

@@ -32,6 +32,7 @@ const Promotion = () => {
   };
   const [selectedDay, setSelectedDay] = useState(defaultValue);
   const [details, setDetails] = useState({
+    couponCode: "",
     programName: "",
     couponType: "",
     usage: {
