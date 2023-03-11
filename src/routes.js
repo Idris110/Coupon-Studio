@@ -14,6 +14,8 @@ import DynamicCoupon from "views/admin/promotion/DynamicCoupon";
 import CouponDetails from "views/admin/promotion/CouponDetails";
 import CustomerSpecific from "views/admin/promotion/customerSpecific";
 import Giftcard from "views/admin/promotion/Giftcard";
+import Register from "views/admin/promotion/Register";
+
 // Auth Imports
 import SignIn from "views/auth/SignIn";
 
@@ -70,6 +72,13 @@ const routes = [
     path: "sign-in",
     icon: <MdLock className="h-6 w-6" />,
     component: <SignIn />,
+  },
+  {
+    name: "Register",
+    layout: "/admin",
+    path: "register",
+    icon: <MdPerson className="h-6 w-6" />,
+    component: <Register />,
   },
   {
     name: "Static Coupon",
