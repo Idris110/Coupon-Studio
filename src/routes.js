@@ -15,6 +15,9 @@ import CouponDetails from "views/admin/promotion/CouponDetails";
 import CustomerSpecific from "views/admin/promotion/customerSpecific";
 import Giftcard from "views/admin/promotion/Giftcard";
 import Register from "views/admin/promotion/Register";
+import Newsletter from "views/admin/promotion/Newsletter";
+import CompanyDetails from "views/admin/promotion/CompanyDetails";
+import Documentation from "views/admin/promotion/Documentation";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -34,6 +37,7 @@ import {
   MdList,
   MdSupervisedUserCircle,
   MdStackedBarChart,
+  MdOutlineFilePresent,
 } from "react-icons/md";
 
 const routes = [
@@ -52,13 +56,13 @@ const routes = [
   //   component: <NFTMarketplace />,
   //   secondary: true,
   // },
-  // {
-  //   name: "Data Tables",
-  //   layout: "/admin",
-  //   icon: <MdBarChart className="h-6 w-6" />,
-  //   path: "data-tables",
-  //   component: <DataTables />,
-  // },
+  {
+    name: "Data Tables",
+    layout: "/admin",
+    icon: <MdBarChart className="h-6 w-6" />,
+    path: "data-tables",
+    component: <DataTables />,
+  },
   // {
   //   name: "Profile",
   //   layout: "/admin",
@@ -101,13 +105,13 @@ const routes = [
     icon: <MdCardGiftcard className="h-6 w-6" />,
     component: <Giftcard />,
   },
-  // {
-  //   name: "Promotions List",
-  //   layout: "/admin",
-  //   path: "listPromo",
-  //   icon: <MdList className="h-6 w-6" />,
-  //   component: <List />,
-  // },
+  {
+    name: "Promotions List",
+    layout: "/admin",
+    path: "listPromo",
+    icon: <MdList className="h-6 w-6" />,
+    component: <List />,
+  },
   // {
   //   name: "Deploy Coupon",
   //   layout: "/admin",
@@ -122,12 +126,26 @@ const routes = [
     icon: <MdSupervisedUserCircle className="h-6 w-6" />,
     component: <CustomerSpecific />,
   },
-  // {
-  //   name: "View Coupon Details",
-  //   layout: "/admin",
-  //   path: "couponDetails",
-  //   icon: <MdBarChart className="h-6 w-6" />,
-  //   component: <CouponDetails />,
-  // },
+  {
+    name: "Newsletter",
+    layout: "/admin",
+    path: "newsletter",
+    icon: <MdMarkunreadMailbox className="h-6 w-6" />,
+    component: <Newsletter />,
+  },
+  {
+    name: "File Reader",
+    layout: "/admin",
+    path: "csvRead",
+    icon: <MdSupervisedUserCircle className="h-6 w-6" />,
+    component: <CompanyDetails />,
+  },
+  {
+    name: "Documentation",
+    layout: "/admin",
+    path: "docs",
+    icon: <MdOutlineFilePresent className="h-6 w-6" />,
+    component: <Documentation />,
+  },
 ];
 export default routes;

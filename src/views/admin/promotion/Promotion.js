@@ -343,7 +343,7 @@ const Promotion = () => {
                 Reward :
               </label>
               <br />
-              <div className="mt-3 grid grid-cols-2">
+              <div className="mt-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ">
                 <div className="mr-4">
                   <div className="relative">
                     <select
