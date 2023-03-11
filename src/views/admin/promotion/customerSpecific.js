@@ -11,17 +11,20 @@ const Promotion = () => {
     }, []);
 
     const getProducts = async () => {
-      let result = await fetch(`http://localhost:3000/company`);
+      let result = await fetch(`http://localhost:3000/UserSpecific/`);
       result = await result.json();
       const newData = result.map((item) => {
         return {
-          name: item.companyName,
-          date: item.companySite,
-          progress: item.companyUniqueId,
+          name: item.programName,
+          date: item.couponType,
+          progress: item._id,
+          status: item._id,
         };
       });
       setProducts(newData);
+      console.log(newData);
     };
+
   const defaultValue = {
     year: 2023,
     month: 3,
@@ -50,34 +53,48 @@ const Promotion = () => {
   });
   const columnsDataComplex = [
     {
-      Header: "Company Name",
+      Header: "Program Name",
       accessor: "name",
     },
-    // {
-    //   Header: "STATUS",
-    //   accessor: "status",
-    // },
     {
-      Header: "Company Url",
+      Header: "Limit",
       accessor: "date",
     },
     {
       Header: "Company Id",
       accessor: "progress",
     },
+    {
+      Header: "Edit",
+      accessor: "status",
+    },
   ];
   const Edit = async (e) => {
-    console.log(e);
+    console.log(e.target.value);
     console.log(details);
-    let id = "640b6f5a9cd0d314cce31b18";
+    let id = e.target.value;
     let result = await fetch(
       `http://localhost:3000/UserSpecific/get/${id}`
     );
     result = await result.json();
     setDetails(result.user);
     console.log(details,"result");
+    getProducts();
 
   }
+  const Delete = async (e) => {
+    console.log(e.target);
+    console.log(e.target.value);
+    let id = e.target.value;
+    // let result = await fetch(`http://localhost:3000/UserSpecific/get/${id}`);
+    // result = await result.json();
+    // setDetails(result.user);
+    // console.log(details, "result");
+    fetch(`http://localhost:3000/UserSpecific/${id}`, {
+      method: "DELETE",
+    }).then((data) => console.log(data,"deleted"));
+    getProducts();
+  };
 //   Edit();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -98,7 +115,7 @@ const Promotion = () => {
   };
   return (
     <div className="flex w-full flex-col gap-5">
-      <ComplexTable columnsData={columnsDataComplex} tableData={products} />
+      <ComplexTable edit={Edit} delet={Delete} columnsData={columnsDataComplex} tableData={products} />
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -382,7 +399,7 @@ const Promotion = () => {
                     shouldHighlightWeekends
                   />
                 </div>
-                <div className="content-end">
+                <div className="">
                   <button
                     type="submit"
                     class="text-blue mt-7 w-1/2 rounded-xl border bg-krishSecondary py-2 px-4 font-bold hover:bg-blue-700"
