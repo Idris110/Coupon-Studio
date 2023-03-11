@@ -4,24 +4,27 @@ import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import ComplexTable from "views/admin/default/components/CouponTable";
 const Promotion = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-      getProducts();
-      // makeTable();
-    }, []);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts();
+    // makeTable();
+  }, []);
 
-    const getProducts = async () => {
-      let result = await fetch(`http://localhost:3000/company`);
-      result = await result.json();
-      const newData = result.map((item) => {
-        return {
-          name: item.companyName,
-          date: item.companySite,
-          progress: item.companyUniqueId,
-        };
-      });
-      setProducts(newData);
-    };
+  const getProducts = async () => {
+    let result = await fetch(`http://localhost:3000/UserSpecific/`);
+    result = await result.json();
+    const newData = result.map((item) => {
+      return {
+        name: item.programName,
+        date: item.couponType,
+        progress: item._id,
+        status: item._id,
+      };
+    });
+    setProducts(newData);
+    console.log(newData);
+  };
+
   const defaultValue = {
     year: 2023,
     month: 3,
@@ -50,35 +53,50 @@ const Promotion = () => {
   });
   const columnsDataComplex = [
     {
-      Header: "Company Name",
+      Header: "Program Name",
       accessor: "name",
     },
-    // {
-    //   Header: "STATUS",
-    //   accessor: "status",
-    // },
     {
-      Header: "Company Url",
+      Header: "Limit",
       accessor: "date",
     },
     {
       Header: "Company Id",
       accessor: "progress",
     },
+    {
+      Header: "Edit",
+      accessor: "status",
+    },
   ];
   const Edit = async (e) => {
-    console.log(e);
+    console.log(e.target.value);
     console.log(details);
-    let id = "640b6f5a9cd0d314cce31b18";
+    let id = e.target.value;
     let result = await fetch(
       `http://localhost:3000/UserSpecific/get/${id}`
     );
     result = await result.json();
     setDetails(result.user);
-    console.log(details,"result");
+    console.log(details, "result");
+    getProducts();
+    clear();
 
   }
-//   Edit();
+  const Delete = async (e) => {
+    console.log(e.target);
+    console.log(e.target.value);
+    let id = e.target.value;
+    // let result = await fetch(`http://localhost:3000/UserSpecific/get/${id}`);
+    // result = await result.json();
+    // setDetails(result.user);
+    // console.log(details, "result");
+    fetch(`http://localhost:3000/UserSpecific/${id}`, {
+      method: "DELETE",
+    }).then((data) => console.log(data, "deleted"));
+    getProducts();
+  };
+  //   Edit();
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
@@ -92,13 +110,42 @@ const Promotion = () => {
       },
     });
     result = await result.json();
-      console.log(result, "result");
+    console.log(result, "result");
     // localStorage.setItem("admin", JSON.stringify(result));
     // navigate("/");
   };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+  }
+
+  const clear = () => {
+    setDetails({
+      programName: "",
+      couponType: "",
+      usage: {
+        type: "",
+        limit: 1,
+      },
+      minPurchase: 0,
+      maxDiscount: 0,
+      porductType: "",
+      reward: {
+        type: "",
+        amount: 0,
+      },
+      expiryDate: {
+        year: 2023,
+        month: 3,
+        day: 11,
+      },
+    });
+  }
+
   return (
     <div className="flex w-full flex-col gap-5">
-      <ComplexTable columnsData={columnsDataComplex} tableData={products} />
+      <ComplexTable edit={Edit} delet={Delete} columnsData={columnsDataComplex} tableData={products} />
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -159,7 +206,7 @@ const Promotion = () => {
             <div className="mt-7 mb-6 w-full px-3 md:mb-0">
               <label
                 htmlFor="condRules"
-                className={`mt-9 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
+                className={`mt-11 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
               >
                 Conditions Rules :
               </label>
@@ -283,10 +330,8 @@ const Promotion = () => {
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="">
-            <div className="mb-6 w-full px-3 md:mb-0">
+            <div className="mt-6 w-full px-3">
               <label
                 htmlFor="progType"
                 className={`mt-5 ml-3 text-xl font-bold text-navy-700 dark:text-white`}
@@ -302,13 +347,13 @@ const Promotion = () => {
                         let x = e.target.value;
                         e.target.value = "unlimited"
                           ? setDetails({
-                              ...details,
-                              usage: { type: x, limit: -1 },
-                            })
+                            ...details,
+                            usage: { type: x, limit: -1 },
+                          })
                           : setDetails({
-                              ...details,
-                              usage: { type: x, limit: details.usage.limit },
-                            });
+                            ...details,
+                            usage: { type: x, limit: details.usage.limit },
+                          });
                       }}
                       className="mr-3 block w-full appearance-none rounded-xl border border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                       id="grid-state"
@@ -348,6 +393,11 @@ const Promotion = () => {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div className="">
+            <div className="mb-6 w-full px-3 md:mb-0">
 
               <label
                 htmlFor="validity"
@@ -356,6 +406,7 @@ const Promotion = () => {
                 Validity
               </label>
             </div>
+
             <div className="mt-2 flex justify-center">
               <div className="">
                 <div className="display-none mt-3">
@@ -382,15 +433,86 @@ const Promotion = () => {
                     shouldHighlightWeekends
                   />
                 </div>
-                <div className="content-end">
-                  <button
-                    type="submit"
-                    class="text-blue mt-7 w-1/2 rounded-xl border bg-krishSecondary py-2 px-4 font-bold hover:bg-blue-700"
-                  >
-                    Button
-                  </button>
+
+                <div className="">
+
                 </div>
               </div>
+            </div>
+
+
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-3 gap-6">
+              <div className="mt-5">
+                <label
+                  htmlFor="targetAud"
+                  className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
+                >
+                  Length of Coupon
+                </label>
+
+                <input
+                  value={details.couponLength}
+                  onChange={(e) => { setDetails({ ...details, couponLength: e.target.value }) }}
+                  type="text"
+                  id="id1"
+                  placeholder="Enter Coupon Length"
+                  disabled={false}
+                  className={`flex items-center justify-center w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+                />
+              </div>
+
+              <div className="mt-5">
+                <label
+                  htmlFor="targetAud"
+                  className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
+                >
+                  Code type
+                </label>
+
+                <div className="relative mt-1">
+                  <select name="couponType"
+                    value={details.couponCodeType}
+                    onChange={(e) => { setDetails({ ...details, couponCodeType: e.target.value }) }}
+                    className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <option value="AlphaNumeric">AlphaNumeric</option>
+                    <option value="Numeric">Numeric</option>
+                    <option value="Alphabetic">Alphabetic</option>
+                    <option value="Custom">Custom</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-5">
+              <input
+                type="text"
+                id="id1"
+                value={details.couponCode}
+                onChange={(e) => { setDetails({ ...details, couponCode: e.target.value }) }}
+                placeholder="Enter Custom Code"
+                disabled={details.couponCodeType !== "Custom" ? true : false}
+                className={` flex items-center justify-center w-full h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+              />
+            </div>
+
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <div className="flex justify-center">
+                <button type="submit" class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary">
+                  Generate Coupon
+                </button>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  onClick={handleUpdate}
+                  class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary">
+                  Update Coupon
+                </button>
+              </div>
+
             </div>
           </div>
         </div>

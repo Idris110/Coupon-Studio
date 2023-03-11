@@ -10,7 +10,7 @@ import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
 import { useMemo } from "react";
 import Progress from "components/progress";
 const ComplexTable = (props) => {
-  const { columnsData, tableData,edit,delet } = props;
+  const { columnsData, tableData, edit, delet } = props;
 
   const columns = useMemo(() => columnsData, [columnsData]);
   const data = useMemo(() => tableData, [tableData]);
@@ -70,7 +70,7 @@ const ComplexTable = (props) => {
                 <tr {...row.getRowProps()} key={index}>
                   {row.cells.map((cell, index) => {
                     let data = "";
-                    console.log(cell,"cell");
+                    console.log(cell, "cell");
                     if (cell.column.Header === "Program Name") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -110,7 +110,7 @@ const ComplexTable = (props) => {
                         // </p>
                         <>
                           <button
-                          value={cell.value}
+                            value={cell.value}
                             onClick={edit}
                             type="submit"
                             className="text-blue mt-7 w-3/5 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
