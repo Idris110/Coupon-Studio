@@ -17,6 +17,7 @@ import Giftcard from "views/admin/promotion/Giftcard";
 import Register from "views/admin/promotion/Register";
 import Newsletter from "views/admin/promotion/Newsletter";
 import CompanyDetails from "views/admin/promotion/CompanyDetails";
+import Documentation from "views/admin/promotion/Documentation";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
