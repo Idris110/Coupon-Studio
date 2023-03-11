@@ -3,10 +3,7 @@ import ComplexTable from "views/admin/default/components/customerSpecificCouponT
 import ColumnsTable from "../tables/components/ColumnsTable";
 import tableDataColumns from "../../../views/admin/tables/variables/tableDataColumns.json"
 import {
-  columnsDataDevelopment,
-  columnsDataCheck,
   columnsDataColumns,
-  columnsDataComplex,
 } from "../../../views/admin/tables/variables/columnsData.js";
 // const columnsDataComplex = [
 //   {
