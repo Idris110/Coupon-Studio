@@ -16,6 +16,7 @@ import CustomerSpecific from "views/admin/promotion/customerSpecific";
 import Giftcard from "views/admin/promotion/Giftcard";
 import Register from "views/admin/promotion/Register";
 import Newsletter from "views/admin/promotion/Newsletter";
+import CompanyDetails from "views/admin/promotion/CompanyDetails";
 
 // Auth Imports
 import SignIn from "views/auth/SignIn";
@@ -102,13 +103,13 @@ const routes = [
     icon: <MdCardGiftcard className="h-6 w-6" />,
     component: <Giftcard />,
   },
-  // {
-  //   name: "Promotions List",
-  //   layout: "/admin",
-  //   path: "listPromo",
-  //   icon: <MdList className="h-6 w-6" />,
-  //   component: <List />,
-  // },
+  {
+    name: "Promotions List",
+    layout: "/admin",
+    path: "listPromo",
+    icon: <MdList className="h-6 w-6" />,
+    component: <List />,
+  },
   // {
   //   name: "Deploy Coupon",
   //   layout: "/admin",
@@ -128,7 +129,14 @@ const routes = [
     layout: "/admin",
     path: "newsletter",
     icon: <MdMarkunreadMailbox className="h-6 w-6" />,
+  },
+  {
     component: <Newsletter />,
+    name: "File Reader",
+    layout: "/admin",
+    path: "csvRead",
+    icon: <MdSupervisedUserCircle className="h-6 w-6" />,
+    component: <CompanyDetails />,
   },
   // {
   //   name: "View Coupon Details",
