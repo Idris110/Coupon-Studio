@@ -56,13 +56,13 @@ const routes = [
   //   component: <NFTMarketplace />,
   //   secondary: true,
   // },
-  {
-    name: "Data Tables",
-    layout: "/admin",
-    icon: <MdBarChart className="h-6 w-6" />,
-    path: "data-tables",
-    component: <DataTables />,
-  },
+  // {
+    // name: "Data Tables",
+    // layout: "/admin",
+    // icon: <MdBarChart className="h-6 w-6" />,
+    // path: "data-tables",
+    // component: <DataTables />,
+  // },
   // {
   //   name: "Profile",
   //   layout: "/admin",
@@ -106,9 +106,9 @@ const routes = [
     component: <Giftcard />,
   },
   {
-    name: "Promotions List",
+    name: "Recommended Coupon",
     layout: "/admin",
-    path: "listPromo",
+    path: "recomendation",
     icon: <MdList className="h-6 w-6" />,
     component: <List />,
   },
