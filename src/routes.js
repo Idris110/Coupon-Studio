@@ -9,7 +9,7 @@ import RTLDefault from "views/rtl/default";
 import Promo from "views/admin/promotion/Promotion";
 import List from "views/admin/promotion/List";
 import DeployCoupon from "views/admin/promotion/DeployCoupon";
-import AddEcom from "views/admin/promotion/AddEcom";
+import DynamicCoupon from "views/admin/promotion/DynamicCoupon";
 import CouponDetails from "views/admin/promotion/CouponDetails";
 import CustomerSpecific from "views/admin/promotion/customerSpecific";
 import Giftcard from "views/admin/promotion/Giftcard";
@@ -33,41 +33,34 @@ const routes = [
     icon: <MdHome className="h-6 w-6" />,
     component: <MainDashboard />,
   },
-  {
-    name: "NFT Marketplace",
-    layout: "/admin",
-    path: "nft-marketplace",
-    icon: <MdOutlineShoppingCart className="h-6 w-6" />,
-    component: <NFTMarketplace />,
-    secondary: true,
-  },
-  {
-    name: "Data Tables",
-    layout: "/admin",
-    icon: <MdBarChart className="h-6 w-6" />,
-    path: "data-tables",
-    component: <DataTables />,
-  },
-  {
-    name: "Profile",
-    layout: "/admin",
-    path: "profile",
-    icon: <MdPerson className="h-6 w-6" />,
-    component: <Profile />,
-  },
+  // {
+  //   name: "NFT Marketplace",
+  //   layout: "/admin",
+  //   path: "nft-marketplace",
+  //   icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+  //   component: <NFTMarketplace />,
+  //   secondary: true,
+  // },
+  // {
+  //   name: "Data Tables",
+  //   layout: "/admin",
+  //   icon: <MdBarChart className="h-6 w-6" />,
+  //   path: "data-tables",
+  //   component: <DataTables />,
+  // },
+  // {
+  //   name: "Profile",
+  //   layout: "/admin",
+  //   path: "profile",
+  //   icon: <MdPerson className="h-6 w-6" />,
+  //   component: <Profile />,
+  // },
   {
     name: "Sign In",
     layout: "/auth",
     path: "sign-in",
     icon: <MdLock className="h-6 w-6" />,
     component: <SignIn />,
-  },
-  {
-    name: "RTL Admin",
-    layout: "/rtl",
-    path: "rtl",
-    icon: <MdHome className="h-6 w-6" />,
-    component: <RTLDefault />,
   },
   {
     name: "Static Coupon",
@@ -98,11 +91,11 @@ const routes = [
     component: <DeployCoupon />,
   },
   {
-    name: "Add Ecommerce",
+    name: "Dynamic Coupon",
     layout: "/admin",
-    path: "addEcom",
+    path: "dynamicCoupon",
     icon: <MdHome className="h-6 w-6" />,
-    component: <AddEcom />,
+    component: <DynamicCoupon />,
   },
   {
     name: "User Specific Coupon",

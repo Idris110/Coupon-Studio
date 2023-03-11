@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function AddEcom() {
+export default function DynamicCoupon() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     companyName: "",
