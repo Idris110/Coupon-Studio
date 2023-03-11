@@ -29,7 +29,7 @@ function Documentation() {
                             >
                                 2
                             </span>
-                            Enter the demo store id, make a test order an use voucher span &nbsp; <span className='font-bold'> ASDF</span>
+                            Enter the demo store id, make a test order an use voucher &nbsp; <span className='font-bold'> ASDF</span>
                         </li>
                         <li class="text-xl mt-5 mb-4 flex text-base">
                             <span
@@ -37,7 +37,31 @@ function Documentation() {
                             >
                                 3
                             </span>
-                            Send a redeem API GET call to <span style={{color : "blue"}}>/ linkasdfadfdfadsfa/ </span>
+                            Send a redeem API GET call to <span style={{color : "blue"}}>/ link-stotre-id/ </span>
+                        </li>
+                        <li class="text-xl mt-5 mb-4 flex text-base">
+                            <span
+                                class="bg-ourTheme mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded"
+                            >
+                                4
+                            </span>
+                            The coupon gets validates by verification in our dataset or though our backend
+                        </li>
+                        <li class="text-xl mt-5 mb-4 flex text-base">
+                            <span
+                                class="bg-ourTheme mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded"
+                            >
+                                5
+                            </span>
+                            Copy and paste the code in your header:<br/>
+                            <span style={{color : "blue"}}>
+                            const response = await fetch(
+        `http://localhost:3000/GiftCard/updateGift/$_iid`,
+        requestOptions
+      );
+                            </span>
+                            
+                            
                         </li>
                         
                     </ol>
@@ -57,7 +81,7 @@ function Documentation() {
                             >
                                 1
                             </span>
-                            Inorder to verify the coupon send the coupon code to our system
+                            Inorder to send you customer cart data to Coupon Studio call our post API
                         </li>
                         <li class="text-xl mt-5 mb-4 flex text-base">
                             <span
@@ -65,15 +89,24 @@ function Documentation() {
                             >
                                 2
                             </span>
-                            Enter the demo store id, make a test order an use voucher span &nbsp; <span className='font-bold'> ASDF</span>
+                            Enter the demo store id, add items to cart to a test our post API
                         </li>
+                        
                         <li class="text-xl mt-5 mb-4 flex text-base">
                             <span
                                 class="bg-ourTheme mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded"
                             >
                                 3
                             </span>
-                            Send a redeem API GET call to <span style={{color : "blue"}}>/ linkasdfadfdfadsfa/ </span>
+                            Send a request on every customer purchase to <span style={{color : "blue"}}>/ link-stotre-id/ </span>
+                        </li>
+                        <li class="text-xl mt-5 mb-4 flex text-base">
+                            <span
+                                class="bg-ourTheme mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded"
+                            >
+                                4
+                            </span>
+                            Your store data gets synced with our data to update your analytics
                         </li>
                         
                     </ol>

@@ -134,9 +134,9 @@ const routes = [
     component: <Newsletter />,
   },
   {
-    name: "File Reader",
+    name: "Company Data",
     layout: "/admin",
-    path: "csvRead",
+    path: "companyData",
     icon: <MdSupervisedUserCircle className="h-6 w-6" />,
     component: <CompanyDetails />,
   },

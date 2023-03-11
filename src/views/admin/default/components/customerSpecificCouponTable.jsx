@@ -70,8 +70,8 @@ const ComplexTable = (props) => {
                 <tr {...row.getRowProps()} key={index}>
                   {row.cells.map((cell, index) => {
                     let data = "";
-                    console.log(cell,"cell");
-                    if (cell.column.Header === "Promotion Name") {
+                    // console.log(cell,"cell");
+                    if (cell.column.Header === "User Id") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
                           {cell.value}
@@ -96,7 +96,7 @@ const ComplexTable = (props) => {
                     //     </div>
                     //   );
                     // }
-                    else if (cell.column.Header === "Promotion Type") {
+                    else if (cell.column.Header === "Limit") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
                           {cell.value}
