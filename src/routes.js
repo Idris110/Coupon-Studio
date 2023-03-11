@@ -15,6 +15,7 @@ import CouponDetails from "views/admin/promotion/CouponDetails";
 import CustomerSpecific from "views/admin/promotion/customerSpecific";
 import Giftcard from "views/admin/promotion/Giftcard";
 import Register from "views/admin/promotion/Register";
+import Newsletter from "views/admin/promotion/Newsletter";
 import CompanyDetails from "views/admin/promotion/CompanyDetails";
 
 // Auth Imports
@@ -53,13 +54,13 @@ const routes = [
   //   component: <NFTMarketplace />,
   //   secondary: true,
   // },
-  // {
-  //   name: "Data Tables",
-  //   layout: "/admin",
-  //   icon: <MdBarChart className="h-6 w-6" />,
-  //   path: "data-tables",
-  //   component: <DataTables />,
-  // },
+  {
+    name: "Data Tables",
+    layout: "/admin",
+    icon: <MdBarChart className="h-6 w-6" />,
+    path: "data-tables",
+    component: <DataTables />,
+  },
   // {
   //   name: "Profile",
   //   layout: "/admin",
@@ -124,6 +125,13 @@ const routes = [
     component: <CustomerSpecific />,
   },
   {
+    name: "Newsletter",
+    layout: "/admin",
+    path: "newsletter",
+    icon: <MdMarkunreadMailbox className="h-6 w-6" />,
+  },
+  {
+    component: <Newsletter />,
     name: "File Reader",
     layout: "/admin",
     path: "csvRead",
