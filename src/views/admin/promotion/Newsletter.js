@@ -1,7 +1,7 @@
 import React from 'react'
 import ColumnsTable from '../tables/components/ColumnsTable'
 import { columnsDataColumns } from '../default/variables/columnsData'
-import tableDataColumns from "../../../views/admin/tables/variables/tableDataColumns.json"
+import tableDataColumns from "../../../views/admin/tables/variables/newsletterData.json"
 
 
 function Newsletter() {

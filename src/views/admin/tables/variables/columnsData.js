@@ -73,3 +73,23 @@ export const columnsDataComplex = [
     accessor: "progress",
   },
 ];
+
+
+export const newsletterColumns = [
+  {
+    Header: "NAME",
+    accessor: "name",
+  },
+  {
+    Header: "EMAIL",
+    accessor: "progress",
+  },
+  {
+    Header: "TYPE",
+    accessor: "quantity",
+  },
+  {
+    Header: "DATE",
+    accessor: "date",
+  },
+];
