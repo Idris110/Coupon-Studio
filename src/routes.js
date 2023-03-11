@@ -146,6 +146,6 @@ const routes = [
     path: "docs",
     icon: <MdOutlineFilePresent className="h-6 w-6" />,
     component: <Documentation />,
-  },
+  }
 ];
 export default routes;
