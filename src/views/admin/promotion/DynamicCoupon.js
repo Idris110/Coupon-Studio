@@ -9,24 +9,16 @@ export default function DynamicCoupon() {
     companyUniqueId: ""
   });
   const [details, setDetails] = useState({
-    setRedemption: "",
-    couponType: "",
-    usage: {
-      type: "",
-      limit: 1
-    },
-    minPurchase: 0,
-    maxDiscount: 0,
-    porductType: "",
-    reward: {
-      type: "",
-      amount: 0
-    },
-    expiryDate: {
-      year: 2023,
-      month: 3,
-      day: 11
-    }
+    redemption: "",
+    promobudget: "",
+    minPurchase: "",
+    maxDiscount: "",
+    minMargin: "",
+    porductType: "Clothing",
+    returningCustomer: false,
+    newCustomer: false,
+    preventCartAbandonment: false
+
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,6 +31,7 @@ export default function DynamicCoupon() {
   };
   const register = async () => {
     // console.log("ll");
+    console.log(details);
     const {
       companyName,
       companySite,
@@ -82,6 +75,8 @@ export default function DynamicCoupon() {
             </label>
 
             <input
+              value={details.redemption}
+              onChange={(e) => { setDetails({ ...details, redemption: e.target.value }) }}
               type="text"
               id="id1"
               placeholder="Enter the Count"
@@ -99,9 +94,12 @@ export default function DynamicCoupon() {
             </label>
 
             <input
+
+              value={details.promobudget}
+              onChange={(e) => { setDetails({ ...details, promobudget: e.target.value }) }}
               type="text"
               id="id1"
-              placeholder="Enter the Count"
+              placeholder="Enter Promotion Budget"
               disabled={false}
               className={`flex items-center justify-center w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
             />
@@ -134,7 +132,8 @@ export default function DynamicCoupon() {
               <input
                 type="text"
                 id="id1"
-                // onChange={(e) => { setDetails({ ...details, minPurchase: e.target.value }) }}
+                value={details.minPurchase}
+                onChange={(e) => { setDetails({ ...details, minPurchase: e.target.value }) }}
                 placeholder="Min purchase amount"
                 disabled={false}
                 className={`flex w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
@@ -149,10 +148,10 @@ export default function DynamicCoupon() {
               </label>
 
               <input
-                // value={details.maxDiscount}
+                value={details.maxDiscount}
                 type="text"
                 id="id1"
-                // onChange={(e) => { setDetails({ ...details, maxDiscount: e.target.value }) }}
+                onChange={(e) => { setDetails({ ...details, maxDiscount: e.target.value }) }}
                 placeholder="Max applicable discount"
                 disabled={false}
                 className={`flex w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
@@ -161,15 +160,16 @@ export default function DynamicCoupon() {
           </div>
 
 
-          <div className="mt-5">
-            <label
-              htmlFor="prodType"
-              className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
-            >
-              On product &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            </label>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-6 gap-6">
+            <div className="">
+              <label
+                htmlFor="prodType"
+                className={`text-lg mt-2 text-navy-700 dark:text-white ml-3 font-bold`}
+              >
+                On product &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              </label>
 
-            {/* <input
+              {/* <input
                   value={details.porductType}
                   type="text"
                   id="id1"
@@ -178,21 +178,41 @@ export default function DynamicCoupon() {
                   disabled={false}
                   className={`mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
                 /> */}
-            <div className="relative mt-1">
-              <select name="couponType"
-                // value={details.couponType}
-                // onChange={(e) => {
-                //   let x = e.target.value
-                //   setDetails({ ...details, couponType: x })
-                // }}
-                className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                <option value="Clothing">Clothing</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Furniture">Furniture</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+              <div className="relative mt-1">
+                <select name="couponType"
+                  value={details.porductType}
+                  onChange={(e) => {
+                    let x = e.target.value
+                    setDetails({ ...details, porductType: x })
+                  }}
+                  className="block appearance-none w-full bg-formBg border border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                  <option value="Clothing">Clothing</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Furniture">Furniture</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
               </div>
+            </div>
+
+            <div className="">
+              <label
+                htmlFor="minSpent"
+                className={`text-lg text-navy-700 dark:text-white ml-3 font-bold`}
+              >
+                Minimum margin
+              </label>
+
+              <input
+                type="text"
+                id="id1"
+                value={details.minMargin}
+                onChange={(e) => { setDetails({ ...details, minMargin: e.target.value }) }}
+                placeholder="Enter minimum margin"
+                disabled={false}
+                className={`flex w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+              />
             </div>
           </div>
 
@@ -213,6 +233,8 @@ export default function DynamicCoupon() {
             <label
               className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
               <input type="checkbox"
+                onChange={(e) => { setDetails({ ...details, newCustomer: !details.newCustomer }) }}
+                value="NewCustomer"
                 className={`focus:ring-0 `} /> New Customer Coupon
             </label>
           </div>
@@ -221,6 +243,8 @@ export default function DynamicCoupon() {
             <label
               className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
               <input type="checkbox"
+                onChange={(e) => { setDetails({ ...details, returningCustomer: !details.returningCustomer }) }}
+                value="ReturningCustomer"
                 className={``} /> Returning Customer Coupon
             </label>
           </div>
@@ -229,6 +253,8 @@ export default function DynamicCoupon() {
             <label
               className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
               <input type="checkbox"
+                value="PreventCartAbandonment"
+                onChange={(e) => { setDetails({ ...details, preventCartAbandonment: !details.preventCartAbandonment }) }}
                 className={``} /> Prevent cart abandontment
             </label>
           </div>
