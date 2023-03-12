@@ -9,7 +9,7 @@ const DailyTraffic = () => {
       <div className="flex flex-row justify-between">
         <div className="ml-1 pt-2">
           <p className="text-sm font-medium leading-4 text-gray-600">
-            Daily Traffic
+            Monthly Usage
           </p>
           <p className="text-[34px] font-bold text-navy-700 dark:text-white">
             2.579{" "}

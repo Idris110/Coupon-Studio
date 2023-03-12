@@ -8,7 +8,7 @@ const PieChartCard = () => {
       <div className="flex flex-row justify-between px-3 pt-2">
         <div>
           <h4 className="text-lg font-bold text-navy-700 dark:text-white">
-            Your Pie Chart
+            Coupon Spent
           </h4>
         </div>
 
@@ -46,6 +46,7 @@ const PieChartCard = () => {
             25%
           </p>
         </div>
+        
       </div>
     </Card>
   );
