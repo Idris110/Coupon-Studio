@@ -518,13 +518,13 @@ const Promotion = () => {
                         let x = e.target.value;
                         e.target.value = "Unlimited"
                           ? setDetails({
-                            ...details,
-                            usage: { type: x, limit: -1 },
-                          })
+                              ...details,
+                              usage: { type: x, limit: -1 },
+                            })
                           : setDetails({
-                            ...details,
-                            usage: { type: x, limit: details.usage.limit },
-                          });
+                              ...details,
+                              usage: { type: x, limit: details.usage.limit },
+                            });
                       }}
                       className="mr-3 block w-full appearance-none rounded-xl border border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                       id="grid-state"
@@ -668,7 +668,7 @@ const Promotion = () => {
                   onClick={handleCoupon}
                   class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
                 >
-                  Create Coupon
+                  Generate Coupon
                 </button>
               </div>
 
@@ -690,12 +690,12 @@ const Promotion = () => {
               type="submit"
               class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
             >
-              Generate Coupon
+              Create Coupon
             </button>
           </div>
           <div className="flex justify-center">
             <button
-            onClick={updateData}
+              onClick={updateData}
               class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
             >
               Update Coupon

@@ -598,20 +598,20 @@ const Promotion = () => {
               <button
                 onClick={handleGenerate}
                 // type="handle"
-                class="mt-3 text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+                class="text-blue mt-8 h-[45px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
               >
-                Create Coupon
+                Generate Coupon
               </button>
               {/* </div> */}
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+            <div className="mt-7 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
               <div className="flex justify-center">
                 <button
                   type="submit"
                   class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
                 >
-                  Generate Coupon
+                  Create Coupon
                 </button>
               </div>
               <div className="flex justify-center">
