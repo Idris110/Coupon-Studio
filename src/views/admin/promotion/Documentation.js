@@ -1,6 +1,10 @@
 import React from "react";
 
 function Documentation() {
+    const x = <div className="ml-5">let result = await fetch&#40; "http://localhost:3000/api/
+        <span style={{ color: "#DC0000" }}>MerchantUId</span>/
+        <span style={{ color: "#DC0000" }}>CouponCode</span>" &#41;;
+        result = await result.json&#40;&#41;;</div>
     return (
         <div className="mt-8">
             <label
@@ -42,13 +46,10 @@ function Documentation() {
                             <span class="mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded bg-ourTheme">
                                 4
                             </span>
-                            Copy and paste the code in your header:
-                            
+                            Copy and paste the code in your header: &nbsp;
+
                             <span style={{ color: "blue" }}>
-                                let result = await fetch( "http://localhost:3000/api/
-                                <span style={{ color: "Red" }}>MerchantUId</span>/
-                                <span style={{ color: "Red" }}>CouponCode</span>" );
-                                <br></br>result = await result.json();
+                                {x}
                             </span>
                         </li>
                         <li class="mt-5 mb-4 flex text-xl text-base">
@@ -62,25 +63,30 @@ function Documentation() {
                             <span class="mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded bg-ourTheme">
                                 6
                             </span>
-                            Sample Output is as follows
+
+                            <span style={{ color: "#DC0000" }}>
+
+                                Sample Output is as follows
+                            </span>
                             <br></br>
                             <span></span>
                         </li>
                     </ol>
-                    {JSON.stringify({
-                        usage: {
-                            type: "",
-                            limit: 1,
-                        },
-                        reward: {
-                            type: "",
-                            amount: 0,
-                        },
-                        expiryDate: {
-                            year: 2023,
-                            month: 3,
-                            day: 22,
-                        },
+                    <span style={{ color: "#CB1C8D" }}>
+                        &#123;
+                        usage: &#123;
+                        type: "",
+                        limit: 1,
+                        &#125;,
+                        reward: &#123;
+                        type: "",
+                        amount: 0,
+                        &#125;,
+                        expiryDate: &#123;
+                        year: 2023,
+                        month: 3,
+                        day: 22,
+                        &#125;,
                         _id: "640c8764818a2552808e9cc5",
                         programName: "Priyansh",
                         couponType: "LoyaltyCards",
@@ -90,7 +96,8 @@ function Documentation() {
                         maxDiscount: 7,
                         porductType: "sad",
                         __v: 0,
-                    })}
+                        &#125;
+                    </span>
                 </div>
 
                 <div className="">
@@ -123,48 +130,68 @@ function Documentation() {
                             <span class="mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded bg-ourTheme">
                                 4
                             </span>
+                            <div>
+                                <span style={{ color: "Blue" }}>
+                                    <span style={{ color: "#DC0000" }}>
+                                        const details = &nbsp;
 
-                            {/* "const details={
-                    "CustomerId": "User ID of customer",
-                    "data": [{
-                        "Brand":"Sprite",
-                        "Product":"250 ml Bottle",
-                        "Selling Price":"45",
-                        "Cost Price":"30",
-                    },
-                    {
-                        "Brand":"Realme",
-                        "Product":"Watch SE",
-                        "Selling Price":"2000",
-                        "Cost Price":"1500",
-                    }
-                    ]
-                }
-                let result = await fetch("http://localhost:3000/api/post/${MerchantUId}", {
-                    method: "post",
-                    body: JSON.stringify(details),
-                    headers: {
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                    },
-                    });
-                result = await result.json(); */}
+                                    </span>
+                                    &#x7b;
+                                    "CustomerId": "User ID of customer",
+                                    "data": [&#x7b;
+                                    "Brand":"Sprite",
+                                    "Product":"250 ml Bottle",
+                                    "Selling Price":"45",
+                                    "Cost Price":"30",
+                                    &#125;,
+                                    &#x7b;
+                                    "Brand":"Realme",
+                                    "Product":"Watch SE",
+                                    "Selling Price":"2000",
+                                    "Cost Price":"1500",
+                                    &#125;
+                                    ]
+                                    &#125;
+                                    <br />
+                                    <span style={{ color: "#DC0000" }}>let result</span> = await fetch("http://localhost:3000/api/post/$&#x7b;MerchantUId/&#125;", &#x7b;
+                                    method: "post",
+                                    body: JSON.stringify(details),
+                                    headers: &#x7b;
+                                    "Content-Type": "application/json",
+                                    Accept: "application/json",
+                                    &#125;,
+                                    &#125;);
+                                    <br />
+                                    <span style={{ color: "#DC0000" }}>
+
+                                        result
+                                    </span>
+                                    = await result.json();
+                                </span>
+
+                            </div>
                         </li>
                         <li class="mt-5 mb-4 flex text-xl text-base">
                             <span class="mr-3 flex h-7 w-full max-w-[30px] items-center justify-center rounded bg-ourTheme">
                                 5
                             </span>
-                            Sample Output:
-                            {/* {
-                "couponCode" : "GET50",
-                "date" : "11th March 2023",
-                "category" : "Electronics",
-                "minPurchase" : "1000",
-                "discountType" : "Percentage",
-                "discount" : "50",
-                "maxDiscount" : "600",
-                "redemptions" : "2"
-                } */}
+                            <span style={{ color: "#CB1C8D" }}>
+                                <span style={{ color: "#DC0000" }}>
+                                    Sample Output: &nbsp;
+                                </span>
+                                <br/>
+                                <br/>
+                                &#x7b;
+                                "couponCode" : "GET50",
+                                "date" : "11th March 2023",
+                                "category" : "Electronics",
+                                "minPurchase" : "1000",
+                                "discountType" : "Percentage",
+                                "discount" : "50",
+                                "maxDiscount" : "600",
+                                "#DC0000emptions" : "2"
+                                &#125;,
+                            </span>
                         </li>
                     </ol>
                 </div>

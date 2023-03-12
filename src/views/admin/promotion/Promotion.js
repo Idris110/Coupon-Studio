@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
 import ComplexTable from "views/admin/default/components/promotionTable";
@@ -140,12 +140,12 @@ const Promotion = () => {
   };
   const generateCode = (type, length) => {
     let alphanum = "";
-    if(type === "Numeric")
+    if (type === "Numeric")
       alphanum = "0123456789"
-    else if(type === "Alphabetic")
-      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    else if(type === "AlphaNumeric")
-      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890123456789";
+    else if (type === "Alphabetic")
+      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    else if (type === "AlphaNumeric")
+      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789";
 
     var code = "";
 
@@ -159,7 +159,7 @@ const Promotion = () => {
     // } else {
     //   generateCode(type, length);
     // }
-    
+
   }
   // const Change = (e) => {
   //   console.log(e);
@@ -170,11 +170,11 @@ const Promotion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
-    if(details.couponCodeType !== "Custom"){
+    if (details.couponCodeType !== "Custom") {
       let code = generateCode(details.couponCodeType, details.couponLength)
-      setDetails({...details, couponCode: code});
+      setDetails({ ...details, couponCode: code });
     }
-    console.log(details,"details");
+    console.log(details, "details");
     let result = await fetch("http://localhost:3000/productType", {
       method: "post",
       body: JSON.stringify(details),
@@ -190,12 +190,7 @@ const Promotion = () => {
   }
   return (
     <div className="flex w-full flex-col gap-5">
-      <ComplexTable
-        edit={Edit}
-        delet={Delete}
-        columnsData={columnsDataComplex}
-        tableData={table}
-      />
+
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -459,13 +454,13 @@ const Promotion = () => {
                         let x = e.target.value;
                         e.target.value = "Unlimited"
                           ? setDetails({
-                              ...details,
-                              usage: { type: x, limit: -1 },
-                            })
+                            ...details,
+                            usage: { type: x, limit: -1 },
+                          })
                           : setDetails({
-                              ...details,
-                              usage: { type: x, limit: details.usage.limit },
-                            });
+                            ...details,
+                            usage: { type: x, limit: details.usage.limit },
+                          });
                       }}
                       className="mr-3 block w-full appearance-none rounded-xl border border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                       id="grid-state"
@@ -628,6 +623,15 @@ const Promotion = () => {
           </div>
         </div>
       </form>
+
+      <div className="mt-6">
+        <ComplexTable
+          edit={Edit}
+          delet={Delete}
+          columnsData={columnsDataComplex}
+          tableData={table}
+        />
+      </div>
     </div>
   );
 };

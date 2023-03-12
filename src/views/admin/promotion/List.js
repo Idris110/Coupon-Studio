@@ -8,9 +8,10 @@ const List = (props) => {
         couponCode="GET50"
         date="11th March 2023"
         category="Electronics"
-        minPurchase="1000"
+        minPurchase="500"
         discountType="Percentage"
-        maxDiscount="150"
+        maxDiscount="400"
+        discount="50"
         redemptions="2" />
         <CustomCard
         couponCode="GET100"
@@ -19,6 +20,7 @@ const List = (props) => {
         minPurchase="1000"
         discountType="Absolute"
         maxDiscount="100"
+        discount="100"
         redemptions="3" />
         <CustomCard
         couponCode="NEW25"
@@ -27,6 +29,7 @@ const List = (props) => {
         minPurchase="1000"
         discountType="Percentage"
         maxDiscount="500"
+        discount="25"
         redemptions="1" />
         <CustomCard
         couponCode="CHECKOUT20"

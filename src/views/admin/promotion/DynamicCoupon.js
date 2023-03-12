@@ -52,7 +52,7 @@ export default function DynamicCoupon() {
         body: JSON.stringify(details),
       };
       const response = await fetch(
-        `http://localhost:3000/dynamicCoupon/updateGift/640c9ddd55a65c48a04b7264`,
+        `http://localhost:3000/dynamicCoupon/updateGift/640d06001c75d659c8706da9`,
         requestOptions
       );
       const data = await response.json();
