@@ -1,8 +1,7 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
 import ComplexTable from "views/admin/default/components/GiftCardTable";
 const Giftcard = () => {
-
   const [details, setDetails] = useState({
     productURL: "",
     receiverEmail: "",
@@ -35,54 +34,58 @@ const Giftcard = () => {
     //   console.log(newData);
   };
 
-  const Numeric8 = ["24173515", "99482462", "45851713"]
-  const Alphabetic8 = ["QLKRCBZQ", "AOOHFCWC", "XUBIACND"]
-  const AlphaNumeric8 = ["LLU92K6J", "HPKH9R5U", "87C5FE1S"]
-  const Numeric12 = ["325833045049", "282214860064", "526283432214"]
-  const Alphabetic12 = ["NRAPGOLKRUAF", "KQNNXTQCZTEB", "EGGIMGUWVSHZ"]
-  const AlphaNumeric12 = ["14OTU7AB611X", "LZVA27EQLI50", "RWL4FQM323E4"]
-  const Numeric16 = ["1910945135043757", "4736961579371537", "9174686308257580"]
-  const Alphabetic16 = ["WRKROUGATVOKAWVJ", "EMVIGDYOXDMWEIEY", "JMTFCZOJITZCAQIP"]
-  const AlphaNumeric16 = ["TZZNDY246S64VUFC", "258P222233M4YZNM", "8C2C54W0IH2U72C1"]
+  const Numeric8 = ["24173515", "99482462", "45851713"];
+  const Alphabetic8 = ["QLKRCBZQ", "AOOHFCWC", "XUBIACND"];
+  const AlphaNumeric8 = ["LLU92K6J", "HPKH9R5U", "87C5FE1S"];
+  const Numeric12 = ["325833045049", "282214860064", "526283432214"];
+  const Alphabetic12 = ["NRAPGOLKRUAF", "KQNNXTQCZTEB", "EGGIMGUWVSHZ"];
+  const AlphaNumeric12 = ["14OTU7AB611X", "LZVA27EQLI50", "RWL4FQM323E4"];
+  const Numeric16 = [
+    "1910945135043757",
+    "4736961579371537",
+    "9174686308257580",
+  ];
+  const Alphabetic16 = [
+    "WRKROUGATVOKAWVJ",
+    "EMVIGDYOXDMWEIEY",
+    "JMTFCZOJITZCAQIP",
+  ];
+  const AlphaNumeric16 = [
+    "TZZNDY246S64VUFC",
+    "258P222233M4YZNM",
+    "8C2C54W0IH2U72C1",
+  ];
 
   const randomGenerate = (type, length) => {
     if (type === "Numeric" && length <= 8) {
-      return Numeric8[Math.floor(Math.random() * 3)]
-    }
-    else if (type === "Numeric" && length <= 12) {
-      return Numeric12[Math.floor(Math.random() * 3)]
-    }
-    else if (type === "Numeric" && length <= 16) {
-      return Numeric16[Math.floor(Math.random() * 3)]
+      return Numeric8[Math.floor(Math.random() * 3)];
+    } else if (type === "Numeric" && length <= 12) {
+      return Numeric12[Math.floor(Math.random() * 3)];
+    } else if (type === "Numeric" && length <= 16) {
+      return Numeric16[Math.floor(Math.random() * 3)];
     }
 
     if (type === "AlphaNumeric" && length <= 8) {
-      return AlphaNumeric8[Math.floor(Math.random() * 3)]
-    }
-    else if (type === "AlphaNumeric" && length <= 12) {
-      return AlphaNumeric12[Math.floor(Math.random() * 3)]
-    }
-    else if (type === "AlphaNumeric" && length <= 16) {
-      return AlphaNumeric16[Math.floor(Math.random() * 3)]
+      return AlphaNumeric8[Math.floor(Math.random() * 3)];
+    } else if (type === "AlphaNumeric" && length <= 12) {
+      return AlphaNumeric12[Math.floor(Math.random() * 3)];
+    } else if (type === "AlphaNumeric" && length <= 16) {
+      return AlphaNumeric16[Math.floor(Math.random() * 3)];
     }
 
     if (type === "Alphabetic" && length <= 8) {
-      return Alphabetic8[Math.floor(Math.random() * 3)]
+      return Alphabetic8[Math.floor(Math.random() * 3)];
+    } else if (type === "Alphabetic" && length <= 12) {
+      return Alphabetic12[Math.floor(Math.random() * 3)];
+    } else if (type === "Alphabetic" && length <= 16) {
+      return Alphabetic16[Math.floor(Math.random() * 3)];
     }
-    else if (type === "Alphabetic" && length <= 12) {
-      return Alphabetic12[Math.floor(Math.random() * 3)]
-    }
-    else if (type === "Alphabetic" && length <= 16) {
-      return Alphabetic16[Math.floor(Math.random() * 3)]
-    }
-  }
+  };
 
   const generateCode = (type, length) => {
     let alphanum = "";
-    if (type === "Numeric")
-      alphanum = "0123456789"
-    else if (type === "Alphabetic")
-      alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if (type === "Numeric") alphanum = "0123456789";
+    else if (type === "Alphabetic") alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     else if (type === "AlphaNumeric")
       alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789";
 
@@ -98,8 +101,7 @@ const Giftcard = () => {
     // } else {
     //   generateCode(type, length);
     // }
-
-  }
+  };
   // const Change = (e) => {
   //   console.log(e);
   //   console.log(details);
@@ -114,11 +116,9 @@ const Giftcard = () => {
         details.couponLength
       );
       console.log(code);
-      setDetails({ ...details, couponCode: code }, () =>
-        console.log(details)
-      );
+      setDetails({ ...details, couponCode: code }, () => console.log(details));
     }
-  }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
@@ -141,7 +141,7 @@ const Giftcard = () => {
     //   console.log(result, "result");
     // localStorage.setItem("admin", JSON.stringify(result));
     // navigate("/");
-  }
+  };
   const updateData = async (e) => {
     e.preventDefault();
     console.log(e);
@@ -193,7 +193,7 @@ const Giftcard = () => {
       couponCode: result.user.couponCode,
     });
     console.log(details, "result");
-    setdisables(true)
+    setdisables(true);
     //   getProducts();
   };
   const Delete = async (e) => {
@@ -214,8 +214,7 @@ const Giftcard = () => {
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 grid grid-cols-1 md:grid-cols-1 md:gap-12 lg:grid-cols-1 xl:grid-cols-1">
           <div className="">
-
-            <div className="flex justify-between mb-4">
+            <div className="mb-4 flex justify-between">
               <div className="w-2/5">
                 <label
                   htmlFor="id1"
@@ -278,9 +277,8 @@ const Giftcard = () => {
           </div>
         </div>
 
-
         <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
-          <div className="mt-5">
+          <div className="">
             <label
               htmlFor="targetAud"
               className={`mt-2 ml-3 text-lg font-bold text-navy-700 dark:text-white`}
@@ -301,7 +299,7 @@ const Giftcard = () => {
             />
           </div>
 
-          <div className="mt-5">
+          <div className="">
             <label
               htmlFor="targetAud"
               className={`mt-2 ml-3 text-lg font-bold text-navy-700 dark:text-white`}
@@ -337,29 +335,33 @@ const Giftcard = () => {
           </div>
         </div>
 
-        <div className="my-7">
-          <div className="flex justify-center mb-10">
-            <button
-              // type="submit"
-              onClick={handleGenerate}
-              disabled={disables}
-              class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
-            >
-              Create Coupon
-            </button>
-          </div>
+        <div className="my-7 mt-12">
+          <div className="grid grid-cols-2 gap-6 ">
+            <div className="">
+              <button
+                // type="submit"
+                onClick={handleGenerate}
+                disabled={disables}
+                class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+              >
+                Generate Coupon
+              </button>
+            </div>
 
-          <input
-            type="text"
-            id="id1"
-            value={details.couponCode}
-            onChange={(e) => {
-              setDetails({ ...details, couponCode: e.target.value });
-            }}
-            placeholder="Enter Custom Code"
-            disabled={details.couponCodeType !== "Custom" ? true : false}
-            className={` h-15 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
-          />
+            <div className="">
+              <input
+                type="text"
+                id="id1"
+                value={details.couponCode}
+                onChange={(e) => {
+                  setDetails({ ...details, couponCode: e.target.value });
+                }}
+                placeholder="Enter Custom Code"
+                disabled={details.couponCodeType !== "Custom" ? true : false}
+                className={` h-15 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
+              />
+            </div>
+          </div>
         </div>
         <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
           <div className="flex justify-center">
@@ -367,7 +369,7 @@ const Giftcard = () => {
               type="submit"
               class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
             >
-              Generate Coupon
+              Create Coupon
             </button>
           </div>
           <div className="flex justify-center">
@@ -397,6 +399,6 @@ const Giftcard = () => {
       />
     </div>
   );
-}
+};
 
-export default Giftcard
+export default Giftcard;
