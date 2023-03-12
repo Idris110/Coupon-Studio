@@ -57,7 +57,7 @@ const Promotion = () => {
       accessor: "name",
     },
     {
-      Header: "Promotion Type",
+      Header: "Coupon Code",
       accessor: "date",
     },
     {
@@ -84,7 +84,7 @@ const Promotion = () => {
       // console.log(item);
       return {
         name: item.programName,
-        date: item.couponType,
+        date: item.couponCode,
         progress: item._id,
         status: item._id,
       };
@@ -518,13 +518,13 @@ const Promotion = () => {
                         let x = e.target.value;
                         e.target.value = "Unlimited"
                           ? setDetails({
-                              ...details,
-                              usage: { type: x, limit: -1 },
-                            })
+                            ...details,
+                            usage: { type: x, limit: -1 },
+                          })
                           : setDetails({
-                              ...details,
-                              usage: { type: x, limit: details.usage.limit },
-                            });
+                            ...details,
+                            usage: { type: x, limit: details.usage.limit },
+                          });
                       }}
                       className="mr-3 block w-full appearance-none rounded-xl border border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                       id="grid-state"

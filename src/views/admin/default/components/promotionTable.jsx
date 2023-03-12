@@ -39,7 +39,7 @@ const ComplexTable = (props) => {
     <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>
       <div class="relative flex items-center justify-between pt-4">
         <div class="text-xl font-bold text-navy-700 dark:text-white">
-          Complex Table
+          Coupon Table
         </div>
         <CardMenu />
       </div>
@@ -79,7 +79,7 @@ const ComplexTable = (props) => {
                         </p>
                       );
                     }
-                    else if (cell.column.Header === "Promotion Type") {
+                    else if (cell.column.Header === "Coupon Code") {
                     //   console.log(cell.value);
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -122,7 +122,7 @@ const ComplexTable = (props) => {
                             value={cell.value}
                             onClick={edit}
                             type="submit"
-                            className="text-blue mt-7 w-3/5 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+                            className="text-blue mt-7 w-3/5 rounded-xl bg-ourTheme py-2 px-3 text-lg font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
                           >
                             Edit
                           </button>
@@ -139,7 +139,7 @@ const ComplexTable = (props) => {
                             value={cell.value}
                             onClick={delet}
                             type="submit"
-                            className="text-blue mt-7 w-3/5 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+                            className="text-blue mt-7 w-3/5 rounded-xl bg-ourTheme py-2 px-3 text-lg font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
                           >
                             Delete
                           </button>
