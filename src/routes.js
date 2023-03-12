@@ -70,20 +70,20 @@ const routes = [
   //   icon: <MdPerson className="h-6 w-6" />,
   //   component: <Profile />,
   // },
-  {
-    name: "Sign In",
-    layout: "/auth",
-    path: "sign-in",
-    icon: <MdLock className="h-6 w-6" />,
-    component: <SignIn />,
-  },
-  {
-    name: "Register",
-    layout: "/admin",
-    path: "register",
-    icon: <MdPerson className="h-6 w-6" />,
-    component: <Register />,
-  },
+  // {
+  //   name: "Sign In",
+  //   layout: "/auth",
+  //   path: "sign-in",
+  //   icon: <MdLock className="h-6 w-6" />,
+  //   component: <SignIn />,
+  // },
+  // {
+  //   name: "Register",
+  //   layout: "/admin",
+  //   path: "register",
+  //   icon: <MdPerson className="h-6 w-6" />,
+  //   component: <Register />,
+  // },
   {
     name: "Static Coupon",
     layout: "/admin",
@@ -146,6 +146,6 @@ const routes = [
     path: "docs",
     icon: <MdOutlineFilePresent className="h-6 w-6" />,
     component: <Documentation />,
-  },
+  }
 ];
 export default routes;

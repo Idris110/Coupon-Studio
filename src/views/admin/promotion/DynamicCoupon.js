@@ -246,7 +246,7 @@ export default function DynamicCoupon() {
             <label
               className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
               <input type="checkbox"
-                onChange={(e) => { setDetails({ ...details, newCustomer: !details.newCustomer }) }}
+                onChange={(e) => { setDetails({ ...details, newCustomer: details.newCustomer }) }}
                 value="NewCustomer"
                 className={`focus:ring-0 `} /> New Customer Coupon
             </label>
@@ -273,12 +273,45 @@ export default function DynamicCoupon() {
           </div>
 
         </div>
+        <div className="ml-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 mt-8 gap-6">
+          <div className="">
+
+            <label
+              className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
+              <input type="checkbox"
+                onChange={(e) => { setDetails({ ...details, newCustomer: !details.newCustomer }) }}
+                value="NewCustomer"
+                className={`focus:ring-0 `} /> Product Recomendation
+            </label>
+          </div>
+          <div className="">
+
+            <label
+              className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
+              <input type="checkbox"
+                onChange={(e) => { setDetails({ ...details, returningCustomer: !details.returningCustomer }) }}
+                value="ReturningCustomer"
+                className={``} /> Product Predection
+            </label>
+          </div>
+          <div className="">
+
+            <label
+              className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
+              <input type="checkbox"
+                value="PreventCartAbandonment"
+                onChange={(e) => { setDetails({ ...details, preventCartAbandonment: !details.preventCartAbandonment }) }}
+                className={``} /> Email opt in
+            </label>
+          </div>
+
+        </div>
 
         <button
           onClick={register} type="button"
-          className="text-blue mt-7 w-1/4 ml-3 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme hover:text-lightPrimary"
+          className="text-blue mt-12 w-1/4 ml-3 rounded-xl bg-ourTheme py-3 px-6 text-xl font-bold hover:bg-ourDarkTheme hover:text-lightPrimary"
         >
-          Generate Coupons
+          Save
         </button>
       </form>
     </div>

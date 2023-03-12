@@ -36,6 +36,7 @@ const Promotion = () => {
     }
   });
   const updateData = async (e) => {
+    e.preventDefault();
     console.log(e);
     const requestOptions = {
       method: "PUT",
@@ -43,11 +44,12 @@ const Promotion = () => {
       body: JSON.stringify(details),
     };
     const response = await fetch(
-      `http://localhost:3000/GiftCard/updateGift/${iid}`,
+      `http://localhost:3000/productType/updateProgram/${iid}`,
       requestOptions
     );
     const data = await response.json();
     console.log(data);
+    getProducts()
   };
   const columnsDataComplex = [
     {
@@ -55,7 +57,7 @@ const Promotion = () => {
       accessor: "name",
     },
     {
-      Header: "Promotion Type",
+      Header: "Coupon Code",
       accessor: "date",
     },
     {
@@ -82,7 +84,7 @@ const Promotion = () => {
       // console.log(item);
       return {
         name: item.programName,
-        date: item.couponType,
+        date: item.couponCode,
         progress: item._id,
         status: item._id,
       };
@@ -123,7 +125,7 @@ const Promotion = () => {
     // setDetails(result.user);
     console.log(details, "result");
     setdisables(true);
-    //   getProducts();
+      // getProducts();
   };
   const Delete = async (e) => {
     console.log(e.target);
@@ -138,6 +140,49 @@ const Promotion = () => {
     }).then((data) => console.log(data, "deleted"));
     getProducts();
   };
+  //9820134444
+  const Numeric8 = ["24173515", "99482462", "45851713"]
+  const Alphabetic8 = ["QLKRCBZQ", "AOOHFCWC", "XUBIACND"]
+  const AlphaNumeric8 = ["LLU92K6J", "HPKH9R5U", "87C5FE1S"]
+  const Numeric12 = ["325833045049", "282214860064", "526283432214"]
+  const Alphabetic12 = ["NRAPGOLKRUAF", "KQNNXTQCZTEB", "EGGIMGUWVSHZ"]
+  const AlphaNumeric12 = ["14OTU7AB611X", "LZVA27EQLI50", "RWL4FQM323E4"]
+  const Numeric16 = ["1910945135043757", "4736961579371537", "9174686308257580"]
+  const Alphabetic16 = ["WRKROUGATVOKAWVJ", "EMVIGDYOXDMWEIEY", "JMTFCZOJITZCAQIP"]
+  const AlphaNumeric16 = ["TZZNDY246S64VUFC", "258P222233M4YZNM", "8C2C54W0IH2U72C1"]
+
+  const randomGenerate = (type, length) => {
+    if (type === "Numeric" && length <= 8) {
+      return Numeric8[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "Numeric" && length <= 12) {
+      return Numeric12[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "Numeric" && length <= 16) {
+      return Numeric16[Math.floor(Math.random() * 3)]
+    }
+
+    if (type === "AlphaNumeric" && length <= 8) {
+      return AlphaNumeric8[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "AlphaNumeric" && length <= 12) {
+      return AlphaNumeric12[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "AlphaNumeric" && length <= 16) {
+      return AlphaNumeric16[Math.floor(Math.random() * 3)]
+    }
+
+    if (type === "Alphabetic" && length <= 8) {
+      return Alphabetic8[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "Alphabetic" && length <= 12) {
+      return Alphabetic12[Math.floor(Math.random() * 3)]
+    }
+    else if (type === "Alphabetic" && length <= 16) {
+      return Alphabetic16[Math.floor(Math.random() * 3)]
+    }
+  }
+  
   const generateCode = (type, length) => {
     let alphanum = "";
     if (type === "Numeric")
@@ -167,14 +212,27 @@ const Promotion = () => {
   //   setDetails(...details, e.target.name: e.target.value);
 
   // }
+  const handleCoupon=async(e)=>{
+    e.preventDefault();
+    if (details.couponCodeType !== "Custom") {
+      let code = await randomGenerate(
+        details.couponCodeType,
+        details.couponLength
+      );
+      console.log(code);
+      setDetails({ ...details, couponCode: code }, () => console.log(details));
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
-    if (details.couponCodeType !== "Custom") {
-      let code = generateCode(details.couponCodeType, details.couponLength)
-      setDetails({ ...details, couponCode: code });
-    }
-    console.log(details, "details");
+    // if (details.couponCodeType !== "Custom") {
+    //   let code = await randomGenerate(details.couponCodeType, details.couponLength)
+    //   console.log(code);
+    //   setDetails({ ...details, couponCode: code }, ()=>(console.log(details)));
+    // }
+
+    // console.log(details, "details");
     let result = await fetch("http://localhost:3000/productType", {
       method: "post",
       body: JSON.stringify(details),
@@ -184,13 +242,15 @@ const Promotion = () => {
       },
     });
     result = await result.json();
-    //   console.log(result, "result");
-    localStorage.setItem("admin", JSON.stringify(result));
+      console.log(result, "result");
+      getProducts();
+    // localStorage.setItem("admin", JSON.stringify(result));
     // navigate("/");
   }
+
+
   return (
     <div className="flex w-full flex-col gap-5">
-
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -313,10 +373,14 @@ const Promotion = () => {
                       let x = e.target.value;
                       setDetails({ ...details, onProductType: x });
                     }}
-                    className="block appearance-none w-full bg-formBg butborder border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    className="butborder mt-3 mr-3 block w-full appearance-none rounded-xl border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+                    id="grid-state"
+                  >
                     <option value="Clothing">Clothing</option>
                     <option value="Electronics">Electronics</option>
                     <option value="Furniture">Furniture</option>
+                    <option value="Furniture">Medicine</option>
+                    <option value="Furniture">Healthcare</option>
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg
@@ -398,14 +462,14 @@ const Promotion = () => {
               </label>
 
               {/* <input
-                value={details.targetAudience}
-                onChange={(e) => { setDetails({ ...details, targetAudience: e.target.value }) }}
-                type="text"
-                id="id1"
-                placeholder="Target Audience"
-                disabled={false}
-                className={`flex items-center justify-center w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
-              /> */}
+              value={details.targetAudience}
+              onChange={(e) => { setDetails({ ...details, targetAudience: e.target.value }) }}
+              type="text"
+              id="id1"
+              placeholder="Target Audience"
+              disabled={false}
+              className={`flex items-center justify-center w-full mt-3 h-15 rounded-xl border p-2 text-lg outline-none pl-5 bg-formBg`}
+            /> */}
               <div className="relative">
                 <select
                   name="couponType"
@@ -601,10 +665,10 @@ const Promotion = () => {
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
               <div className="flex justify-center">
                 <button
-                  type="submit"
+                  onClick={handleCoupon}
                   class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
                 >
-                  Generate Coupon
+                  Create Coupon
                 </button>
               </div>
 
@@ -620,6 +684,22 @@ const Promotion = () => {
                 className={` h-15 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
               />
             </div>
+          </div>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+            >
+              Generate Coupon
+            </button>
+          </div>
+          <div className="flex justify-center">
+            <button
+            onClick={updateData}
+              class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+            >
+              Update Coupon
+            </button>
           </div>
         </div>
       </form>

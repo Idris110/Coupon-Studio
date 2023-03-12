@@ -24,7 +24,7 @@ const Promotion = () => {
     setProducts(newData);
     // console.log(newData);
   };
-  
+
 
   const defaultValue = {
     year: 2023,
@@ -37,7 +37,7 @@ const Promotion = () => {
     couponCode: "",
     programName: "",
     couponType: "",
-    couponLength:"",
+    couponLength: "",
     usage: {
       type: "",
       limit: 1,
@@ -54,14 +54,15 @@ const Promotion = () => {
       month: 3,
       day: 11,
     },
+    couponCodeType: "AlphaNumeric"
   });
   const columnsDataComplex = [
     {
-      Header: "User Id",
+      Header: "User Email",
       accessor: "name",
     },
     {
-      Header: "Limit",
+      Header: "Type",
       accessor: "date",
     },
     {
@@ -73,6 +74,53 @@ const Promotion = () => {
       accessor: "status",
     },
   ];
+  const Numeric8 = ["24173515", "99482462", "45851713"];
+  const Alphabetic8 = ["QLKRCBZQ", "AOOHFCWC", "XUBIACND"];
+  const AlphaNumeric8 = ["LLU92K6J", "HPKH9R5U", "87C5FE1S"];
+  const Numeric12 = ["325833045049", "282214860064", "526283432214"];
+  const Alphabetic12 = ["NRAPGOLKRUAF", "KQNNXTQCZTEB", "EGGIMGUWVSHZ"];
+  const AlphaNumeric12 = ["14OTU7AB611X", "LZVA27EQLI50", "RWL4FQM323E4"];
+  const Numeric16 = [
+    "1910945135043757",
+    "4736961579371537",
+    "9174686308257580",
+  ];
+  const Alphabetic16 = [
+    "WRKROUGATVOKAWVJ",
+    "EMVIGDYOXDMWEIEY",
+    "JMTFCZOJITZCAQIP",
+  ];
+  const AlphaNumeric16 = [
+    "TZZNDY246S64VUFC",
+    "258P222233M4YZNM",
+    "8C2C54W0IH2U72C1",
+  ];
+  const randomGenerate = (type, length) => {
+    if (type === "Numeric" && length <= 8) {
+      return Numeric8[Math.floor(Math.random() * 3)];
+    } else if (type === "Numeric" && length <= 12) {
+      return Numeric12[Math.floor(Math.random() * 3)];
+    } else if (type === "Numeric" && length <= 16) {
+      return Numeric16[Math.floor(Math.random() * 3)];
+    }
+
+    if (type === "AlphaNumeric" && length <= 8) {
+      return AlphaNumeric8[Math.floor(Math.random() * 3)];
+    } else if (type === "AlphaNumeric" && length <= 12) {
+      return AlphaNumeric12[Math.floor(Math.random() * 3)];
+    } else if (type === "AlphaNumeric" && length <= 16) {
+      return AlphaNumeric16[Math.floor(Math.random() * 3)];
+    }
+
+    if (type === "Alphabetic" && length <= 8) {
+      return Alphabetic8[Math.floor(Math.random() * 3)];
+    } else if (type === "Alphabetic" && length <= 12) {
+      return Alphabetic12[Math.floor(Math.random() * 3)];
+    } else if (type === "Alphabetic" && length <= 16) {
+      return Alphabetic16[Math.floor(Math.random() * 3)];
+    }
+  };
+    
   const Edit = async (e) => {
     // console.log(e.target.value);
     // console.log(details);
@@ -83,7 +131,7 @@ const Promotion = () => {
     result = await result.json();
     setId(id);
     console.log(result.user.couponLength, "result");
-    let text = result.user.couponLength;
+    let text = result.user.couponCode;
     setDetails({
       couponCode: text,
       programName: result.user.programName,
@@ -115,6 +163,14 @@ const Promotion = () => {
     getProducts();
   };
   //   Edit();
+  const handleGenerate = async (e) => {
+    e.preventDefault();
+    if (details.couponType !== "Custom") {
+      let code = await randomGenerate(details.couponCodeType, details.couponLength);
+      console.log(code);
+      setDetails({ ...details, couponCode: code }, () => console.log(details));
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
@@ -134,6 +190,7 @@ const Promotion = () => {
   };
 
   const updateData = async (e) => {
+    e.preventDefault();
     console.log(e);
     const requestOptions = {
       method: "PUT",
@@ -173,12 +230,6 @@ const Promotion = () => {
 
   return (
     <div className="flex w-full flex-col gap-5">
-      <ComplexTable
-        edit={Edit}
-        delet={Delete}
-        columnsData={columnsDataComplex}
-        tableData={products}
-      />
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -186,7 +237,7 @@ const Promotion = () => {
               htmlFor="id1"
               className={`mt-5 mb-5 ml-6 text-xl font-bold text-navy-700 dark:text-white`}
             >
-              User Id
+              User Email Id
             </label>
             <input
               value={details.programName}
@@ -195,7 +246,7 @@ const Promotion = () => {
               onChange={(e) => {
                 setDetails({ ...details, programName: e.target.value });
               }}
-              placeholder="Enter the program name"
+              placeholder="Enter receiver's Email Id"
               className={`h-15 mb-5 mt-3 ml-3 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-4 text-lg outline-none`}
             />
 
@@ -502,7 +553,7 @@ const Promotion = () => {
 
                 <div className="relative mt-1">
                   <select
-                    name="couponType"
+                    name="couponCodeType"
                     value={details.couponCodeType}
                     onChange={(e) => {
                       setDetails({
@@ -543,6 +594,15 @@ const Promotion = () => {
                 disabled={details.couponCodeType !== "Custom" ? true : false}
                 className={` h-15 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
               />
+              {/* <div className="flex justify-center"> */}
+              <button
+                onClick={handleGenerate}
+                // type="handle"
+                class="mt-3 text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+              >
+                Create Coupon
+              </button>
+              {/* </div> */}
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
@@ -566,6 +626,13 @@ const Promotion = () => {
           </div>
         </div>
       </form>
+
+      <ComplexTable
+        edit={Edit}
+        delet={Delete}
+        columnsData={columnsDataComplex}
+        tableData={products}
+      />
     </div>
   );
 };

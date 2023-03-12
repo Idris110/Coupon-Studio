@@ -530,7 +530,7 @@ const CompanyDetails = () => {
                 <p className="mr-2 pl-7 ml-4 my-3 text-lg">{elem.brand}</p>
                 <p className="mx-2 my-3 text-lg">{elem.product_id}</p>
                 <p className="mx-2 pl-4 my-3 text-lg">{elem.price}</p>
-                <p className="mr-6 my-3 text-lg">{elem.event_time}</p>
+                <p className="mr-2 my-3 text-lg">{elem.event_time}</p>
               </div>
             )
           })}

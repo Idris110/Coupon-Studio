@@ -72,7 +72,7 @@ const ComplexTable = (props) => {
                   {row.cells.map((cell, index) => {
                     let data = "";
                     // console.log(cell, "cell");
-                    if (cell.column.Header === "User Id") {
+                    if (cell.column.Header === "Email Id") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
                           {cell.value}
@@ -97,7 +97,7 @@ const ComplexTable = (props) => {
                     //     </div>
                     //   );
                     // }
-                    else if (cell.column.Header === "Limit") {
+                    else if (cell.column.Header === "Amount") {
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
                           {cell.value}
