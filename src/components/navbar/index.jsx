@@ -10,7 +10,7 @@ import {
   IoMdNotificationsOutline,
   IoMdInformationCircleOutline,
 } from "react-icons/io";
-import avatar from "assets/img/avatars/avatar4.png";
+import avatar from "assets/img/krish.jpeg";
 
 const Navbar = (props) => {
   const { onOpenSidenav, brandText } = props;
@@ -189,7 +189,7 @@ const Navbar = (props) => {
               <div className="mt-3 ml-4">
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
-                    👋 Hey, Adela
+                    👋 Hey, Krish
                   </p>{" "}
                 </div>
               </div>

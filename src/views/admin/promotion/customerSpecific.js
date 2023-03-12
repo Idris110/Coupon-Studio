@@ -24,7 +24,7 @@ const Promotion = () => {
     setProducts(newData);
     // console.log(newData);
   };
-  
+
 
   const defaultValue = {
     year: 2023,
@@ -37,7 +37,7 @@ const Promotion = () => {
     couponCode: "",
     programName: "",
     couponType: "",
-    couponLength:"",
+    couponLength: "",
     usage: {
       type: "",
       limit: 1,
@@ -173,12 +173,7 @@ const Promotion = () => {
 
   return (
     <div className="flex w-full flex-col gap-5">
-      <ComplexTable
-        edit={Edit}
-        delet={Delete}
-        columnsData={columnsDataComplex}
-        tableData={products}
-      />
+
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -186,7 +181,7 @@ const Promotion = () => {
               htmlFor="id1"
               className={`mt-5 mb-5 ml-6 text-xl font-bold text-navy-700 dark:text-white`}
             >
-              User Id
+              User Email Id
             </label>
             <input
               value={details.programName}
@@ -195,7 +190,7 @@ const Promotion = () => {
               onChange={(e) => {
                 setDetails({ ...details, programName: e.target.value });
               }}
-              placeholder="Enter the program name"
+              placeholder="Enter receiver's Email Id"
               className={`h-15 mb-5 mt-3 ml-3 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-4 text-lg outline-none`}
             />
 
@@ -380,13 +375,13 @@ const Promotion = () => {
                         let x = e.target.value;
                         e.target.value = "unlimited"
                           ? setDetails({
-                              ...details,
-                              usage: { type: x, limit: -1 },
-                            })
+                            ...details,
+                            usage: { type: x, limit: -1 },
+                          })
                           : setDetails({
-                              ...details,
-                              usage: { type: x, limit: details.usage.limit },
-                            });
+                            ...details,
+                            usage: { type: x, limit: details.usage.limit },
+                          });
                       }}
                       className="mr-3 block w-full appearance-none rounded-xl border border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                       id="grid-state"
@@ -566,6 +561,13 @@ const Promotion = () => {
           </div>
         </div>
       </form>
+
+      <ComplexTable
+        edit={Edit}
+        delet={Delete}
+        columnsData={columnsDataComplex}
+        tableData={products}
+      />
     </div>
   );
 };
