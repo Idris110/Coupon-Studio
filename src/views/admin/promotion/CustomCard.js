@@ -15,23 +15,44 @@ import {
 } from "@material-tailwind/react";
 const CustomCard = (props) => {
   const [products, setProducts] = useState([]);
-  useEffect(() => {
-    getProducts();
-    // makeTable();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  //   // makeTable();
+  // }, []);
   const { couponCode, date, category, minPurchase, discount, discountType, maxDiscount, redemptions } = props;
-  const getProducts = async () => {
-    let result = await fetch(`http://localhost:3000/company`);
-    result = await result.json();
-    const newData = result.map((item) => {
-      return {
-        name: item.companyName,
-        date: item.companySite,
-        progress: item.companyUniqueId,
-      };
+  // const getProducts = async () => {
+  //   let result = await fetch(`http://localhost:3000/company`);
+  //   result = await result.json();
+  //   const newData = result.map((item) => {
+  //     return {
+  //       name: item.companyName,
+  //       date: item.companySite,
+  //       progress: item.companyUniqueId,
+  //     };
+  //   });
+  //   setProducts(newData);
+  // };
+
+  const handleSubmit = async () => {
+    let result = await fetch("http://localhost:3000/productType", {
+      method: "post",
+      body: {
+        couponCode,
+        date,
+        category, 
+        minPurchase, 
+        discount, 
+        discountType, 
+        maxDiscount, 
+        redemptions
+      },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     });
-    setProducts(newData);
-  };
+
+  }
 
   return (
     <div className="mt-7">
@@ -51,11 +72,11 @@ const CustomCard = (props) => {
             <div className="pr-10 pt-2">
               <button
                 // type="submit"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
                 // disabled={disables}
                 class="text-[#000000] h-[50px] rounded-xl w-[100px] bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
               >
-                Edit
+                ADD
               </button>
             </div>
           </div>
