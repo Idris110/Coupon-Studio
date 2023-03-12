@@ -106,14 +106,27 @@ const Giftcard = () => {
     //   setDetails(...details, e.target.name: e.target.value);
   
     // }
+    const handleGenerate=async(e)=>{
+       e.preventDefault();
+      if (details.couponCodeType !== "Custom") {
+        let code = await randomGenerate(
+          details.couponCodeType,
+          details.couponLength
+        );
+        console.log(code);
+        setDetails({ ...details, couponCode: code }, () =>
+          console.log(details)
+        );
+      }
+    }
     const handleSubmit = async (e) => {
       e.preventDefault();
       // console.log(e);
-      if (details.couponCodeType !== "Custom") {
-        let code = await randomGenerate(details.couponCodeType, details.couponLength)
-        console.log(code);
-        setDetails({ ...details, couponCode: code }, ()=>(console.log(details)));
-      }
+      // if (details.couponCodeType !== "Custom") {
+      //   let code = await randomGenerate(details.couponCodeType, details.couponLength)
+      //   console.log(code);
+      //   setDetails({ ...details, couponCode: code }, ()=>(console.log(details)));
+      // }
         console.log(details);
         let result = await fetch("http://localhost:3000/GiftCard", {
             method: "post",
@@ -130,6 +143,7 @@ const Giftcard = () => {
         // navigate("/");
     }
     const updateData = async (e) => {
+    e.preventDefault();
       console.log(e);
       const requestOptions = {
         method: "PUT",
@@ -142,14 +156,15 @@ const Giftcard = () => {
       );
       const data = await response.json();
       console.log(data);
+      getProducts();
     };
     const columnsDataComplex = [
       {
-        Header: "User Id",
+        Header: "Email Id",
         accessor: "name",
       },
       {
-        Header: "Limit",
+        Header: "Amount",
         accessor: "date",
       },
       {
@@ -311,11 +326,11 @@ const Giftcard = () => {
             <div className="flex justify-center">
               <button
                 // type="submit"
-                onClick={handleSubmit}
+                onClick={handleGenerate}
                 disabled={disables}
                 class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
               >
-                Generate Coupon
+                Create Coupon
               </button>
             </div>
 
@@ -331,15 +346,31 @@ const Giftcard = () => {
               className={` h-15 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
             />
           </div>
+          {/* <div className="flex justify-center"> */}
+            <button
+              type="submit"
+              class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+            >
+              Generate Coupon
+            </button>
+          {/* </div> */}
+          {/* <div className="flex justify-center"> */}
+            <button
+              onClick={updateData}
+              class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+            >
+              Update Coupon
+            </button>
+          {/* </div> */}
 
-          <button
+          {/* <button
             disabled={!disables}
             onClick={updateData}
             type="submit"
             class="text-blue mt-7 ml-2 w-1/4 rounded-xl border bg-krishSecondary py-2 px-4 font-bold hover:bg-blue-700"
           >
             Update
-          </button>
+          </button> */}
         </form>
         <ComplexTable
           edit={Edit}

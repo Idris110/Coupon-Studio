@@ -246,7 +246,7 @@ export default function DynamicCoupon() {
             <label
               className={`text-xl text-navy-700 dark:text-white ml-3 font-bold`}>
               <input type="checkbox"
-                onChange={(e) => { setDetails({ ...details, newCustomer: !details.newCustomer }) }}
+                onChange={(e) => { setDetails({ ...details, newCustomer: details.newCustomer }) }}
                 value="NewCustomer"
                 className={`focus:ring-0 `} /> New Customer Coupon
             </label>

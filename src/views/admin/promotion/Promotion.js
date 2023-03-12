@@ -36,6 +36,7 @@ const Promotion = () => {
     }
   });
   const updateData = async (e) => {
+    e.preventDefault();
     console.log(e);
     const requestOptions = {
       method: "PUT",
@@ -43,11 +44,12 @@ const Promotion = () => {
       body: JSON.stringify(details),
     };
     const response = await fetch(
-      `http://localhost:3000/GiftCard/updateGift/${iid}`,
+      `http://localhost:3000/productType/updateProgram/${iid}`,
       requestOptions
     );
     const data = await response.json();
     console.log(data);
+    getProducts()
   };
   const columnsDataComplex = [
     {
@@ -123,7 +125,7 @@ const Promotion = () => {
     // setDetails(result.user);
     console.log(details, "result");
     setdisables(true);
-    //   getProducts();
+      // getProducts();
   };
   const Delete = async (e) => {
     console.log(e.target);
@@ -210,16 +212,27 @@ const Promotion = () => {
   //   setDetails(...details, e.target.name: e.target.value);
 
   // }
+  const handleCoupon=async(e)=>{
+    e.preventDefault();
+    if (details.couponCodeType !== "Custom") {
+      let code = await randomGenerate(
+        details.couponCodeType,
+        details.couponLength
+      );
+      console.log(code);
+      setDetails({ ...details, couponCode: code }, () => console.log(details));
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e);
-    if (details.couponCodeType !== "Custom") {
-      let code = await randomGenerate(details.couponCodeType, details.couponLength)
-      console.log(code);
-      setDetails({ ...details, couponCode: code }, ()=>(console.log(details)));
-    }
+    // if (details.couponCodeType !== "Custom") {
+    //   let code = await randomGenerate(details.couponCodeType, details.couponLength)
+    //   console.log(code);
+    //   setDetails({ ...details, couponCode: code }, ()=>(console.log(details)));
+    // }
 
-    console.log(details, "details");
+    // console.log(details, "details");
     let result = await fetch("http://localhost:3000/productType", {
       method: "post",
       body: JSON.stringify(details),
@@ -229,15 +242,15 @@ const Promotion = () => {
       },
     });
     result = await result.json();
-    //   console.log(result, "result");
-    localStorage.setItem("admin", JSON.stringify(result));
+      console.log(result, "result");
+      getProducts();
+    // localStorage.setItem("admin", JSON.stringify(result));
     // navigate("/");
   }
 
 
   return (
     <div className="flex w-full flex-col gap-5">
-
       <form onSubmit={handleSubmit} action="" className="mt-5">
         <div className="mt-6 mb-8 grid grid-cols-1 md:grid-cols-2 md:gap-12 lg:grid-cols-2 xl:grid-cols-2">
           <div className="">
@@ -360,7 +373,9 @@ const Promotion = () => {
                       let x = e.target.value;
                       setDetails({ ...details, onProductType: x });
                     }}
-                    className="block appearance-none w-full bg-formBg butborder border-gray-200 text-gray-700 mt-3 mr-3 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    className="butborder mt-3 mr-3 block w-full appearance-none rounded-xl border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+                    id="grid-state"
+                  >
                     <option value="Clothing">Clothing</option>
                     <option value="Electronics">Electronics</option>
                     <option value="Furniture">Furniture</option>
@@ -503,13 +518,13 @@ const Promotion = () => {
                         let x = e.target.value;
                         e.target.value = "Unlimited"
                           ? setDetails({
-                            ...details,
-                            usage: { type: x, limit: -1 },
-                          })
+                              ...details,
+                              usage: { type: x, limit: -1 },
+                            })
                           : setDetails({
-                            ...details,
-                            usage: { type: x, limit: details.usage.limit },
-                          });
+                              ...details,
+                              usage: { type: x, limit: details.usage.limit },
+                            });
                       }}
                       className="mr-3 block w-full appearance-none rounded-xl border border-gray-200 bg-formBg py-3 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
                       id="grid-state"
@@ -650,10 +665,10 @@ const Promotion = () => {
             <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
               <div className="flex justify-center">
                 <button
-                  type="submit"
+                  onClick={handleCoupon}
                   class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
                 >
-                  Generate Coupon
+                  Create Coupon
                 </button>
               </div>
 
@@ -669,6 +684,22 @@ const Promotion = () => {
                 className={` h-15 flex w-full items-center justify-center rounded-xl border bg-formBg p-2 pl-5 text-lg outline-none`}
               />
             </div>
+          </div>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+            >
+              Generate Coupon
+            </button>
+          </div>
+          <div className="flex justify-center">
+            <button
+            onClick={updateData}
+              class="text-blue h-[50px] w-full rounded-xl bg-ourTheme text-xl font-bold hover:bg-ourDarkTheme  hover:text-lightPrimary"
+            >
+              Update Coupon
+            </button>
           </div>
         </div>
       </form>
