@@ -31,7 +31,7 @@ export const columnsDataCheck = [
     accessor: "quantity",
   },
   {
-    Header: "DATE",
+    Header: "EXPIRY DATE",
     accessor: "date",
   },
 ];
