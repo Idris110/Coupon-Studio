@@ -57,7 +57,7 @@ const Promotion = () => {
       accessor: "name",
     },
     {
-      Header: "Promotion Type",
+      Header: "Coupon Code",
       accessor: "date",
     },
     {
@@ -84,7 +84,7 @@ const Promotion = () => {
       // console.log(item);
       return {
         name: item.programName,
-        date: item.couponType,
+        date: item.couponCode,
         progress: item._id,
         status: item._id,
       };

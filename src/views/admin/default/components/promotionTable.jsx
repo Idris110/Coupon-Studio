@@ -79,7 +79,7 @@ const ComplexTable = (props) => {
                         </p>
                       );
                     }
-                    else if (cell.column.Header === "Promotion Type") {
+                    else if (cell.column.Header === "Coupon Code") {
                     //   console.log(cell.value);
                       data = (
                         <p className="text-sm font-bold text-navy-700 dark:text-white">
