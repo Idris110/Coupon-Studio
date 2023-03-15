@@ -1,7 +1,0 @@
-promo table:
-
-prog name
-prog Type
-validity
-limit usage
-company
